@@ -1,0 +1,382 @@
+{
+  "schema_version": 1,
+  "note": "Fixed 1920x1080 storyboard frame layouts. A storyboard still is a planning input, not a rendered video. Pick the layout that matches the beat; do not invent a new one.",
+  "shared": {
+    "css": "assets/templates/html/video-frame-kit.css",
+    "canvas": [
+      1920,
+      1080
+    ],
+    "field": "#F0F8F1",
+    "field_plain": "#F4F6F2",
+    "ink": "#151715",
+    "accentFill": "linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%)",
+    "mesh": {
+      "file": "assets/visual-kit/backgrounds/mesh-bloom.svg",
+      "x": -586,
+      "y": -998,
+      "w": 3092,
+      "h": 2938
+    },
+    "meshWide": {
+      "file": "assets/visual-kit/backgrounds/mesh-bloom-wide.svg",
+      "x": -311,
+      "y": -415,
+      "w": 2476,
+      "h": 1963
+    },
+    "title": {
+      "font": "Outfit",
+      "sizePx": 100,
+      "lineHeightPx": 120,
+      "weight": 400,
+      "letterSpacing": "-0.02em"
+    },
+    "caption": {
+      "font": "Outfit",
+      "sizePx": 80,
+      "lineHeightPx": 96,
+      "weight": 400,
+      "letterSpacing": "-0.02em"
+    }
+  },
+  "types": [
+    {
+      "id": "tpl-video-frame-title",
+      "html": "assets/templates/html/video-frame-title.html",
+      "use": "Beat opener. One headline, optional inline accent run.",
+      "mesh": "mesh",
+      "boxes": {
+        "title": [
+          210,
+          380,
+          1500,
+          240
+        ]
+      },
+      "slots": [
+        "headline",
+        "title-accent"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-logo",
+      "html": "assets/templates/html/video-frame-logo.html",
+      "use": "Brand card. Logo lockup only.",
+      "mesh": "mesh",
+      "boxes": {
+        "lockup": [
+          580,
+          462,
+          761,
+          157
+        ]
+      },
+      "slots": [
+        "logo"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-caption",
+      "html": "assets/templates/html/video-frame-caption.html",
+      "use": "Mark above a single caption line.",
+      "mesh": "mesh",
+      "boxes": {
+        "mark": [
+          855,
+          344,
+          210,
+          210
+        ],
+        "caption": [
+          210,
+          620,
+          1500,
+          96
+        ]
+      },
+      "slots": [
+        "logo-mark",
+        "headline",
+        "title-accent"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-ui",
+      "html": "assets/templates/html/video-frame-ui.html",
+      "use": "Product UI beat. The card runs off the bottom edge on purpose.",
+      "mesh": null,
+      "boxes": {
+        "card": [
+          174,
+          214,
+          1600,
+          1024
+        ],
+        "badge": [
+          875,
+          375,
+          170,
+          170
+        ]
+      },
+      "card": {
+        "r": 30,
+        "bg": "#FFFFFF",
+        "shadow": "0 10px 30px rgba(21,23,21,0.08)"
+      },
+      "badge": {
+        "r": 50,
+        "fill": "linear-gradient(103deg, #07B7A2 0%, #078CDE 56%, #737CFF 100%)"
+      },
+      "slots": [
+        "ui-screenshot",
+        "icon"
+      ],
+      "rejects": [
+        "logo",
+        "logo mark",
+        "logo lockup",
+        "wordmark"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-stat",
+      "html": "assets/templates/html/video-frame-stat.html",
+      "use": "Two numbers, staggered on a diagonal, over a faint field.",
+      "mesh": null,
+      "field_layers": [
+        {
+          "file": "assets/visual-kit/materials/tile-field-wide.svg",
+          "x": 0,
+          "y": 179,
+          "w": 1920,
+          "h": 723,
+          "opacity": 0.1
+        },
+        {
+          "slot": "art-band",
+          "x": 19,
+          "y": 179,
+          "w": 1882,
+          "h": 721,
+          "opacity": 0.05
+        }
+      ],
+      "boxes": {
+        "statA": [
+          360,
+          311
+        ],
+        "statB": [
+          1080,
+          436
+        ]
+      },
+      "value": {
+        "sizePx": 150,
+        "lineHeightPx": 180,
+        "weight": 600
+      },
+      "label": {
+        "sizePx": 76,
+        "lineHeightPx": 91.2,
+        "weight": 400
+      },
+      "slots": [
+        "stat-value-a",
+        "stat-label-a",
+        "stat-value-b",
+        "stat-label-b",
+        "art-band"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-chips",
+      "html": "assets/templates/html/video-frame-chips.html",
+      "use": "Mark above a rail of six supplied icons.",
+      "mesh": null,
+      "boxes": {
+        "mark": [
+          823,
+          198,
+          273,
+          273
+        ],
+        "rail": [
+          440,
+          516,
+          1040,
+          210
+        ]
+      },
+      "rail": {
+        "r": 30,
+        "tint": "linear-gradient(103deg, #01D1B8 0%, #18A7FF 100%) at 0.2 over the field"
+      },
+      "chip": {
+        "size": 130,
+        "r": 20,
+        "bg": "#FFFFFF",
+        "iconSize": 84,
+        "gap": 36
+      },
+      "slots": [
+        "logo-mark",
+        "icon-a",
+        "icon-b",
+        "icon-c",
+        "icon-d",
+        "icon-e",
+        "icon-f"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-label-row",
+      "html": "assets/templates/html/video-frame-label-row.html",
+      "use": "Two accent words either side of a card of four labelled icon plates.",
+      "mesh": "meshWide",
+      "boxes": {
+        "wordA": [
+          88,
+          454,
+          520,
+          120
+        ],
+        "card": [
+          646,
+          399,
+          629,
+          224
+        ],
+        "wordB": [
+          1312,
+          454,
+          520,
+          120
+        ]
+      },
+      "card": {
+        "r": 30,
+        "bg": "#FFFFFF"
+      },
+      "plate": {
+        "size": 108,
+        "r": 25.67,
+        "bg": "#F9F9F9",
+        "iconSize": 72,
+        "gap": 40,
+        "label": {
+          "sizePx": 30,
+          "lineHeightPx": 36
+        }
+      },
+      "titleLetterSpacing": "-0.03em",
+      "slots": [
+        "headline",
+        "headline-accent",
+        "icon-a",
+        "icon-b",
+        "icon-c",
+        "icon-d",
+        "icon-label-a",
+        "icon-label-b",
+        "icon-label-c",
+        "icon-label-d"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-endcard",
+      "html": "assets/templates/html/video-frame-endcard.html",
+      "use": "Closing card. Mark on the sparkle scatter, lockup below, optional CTA.",
+      "mesh": "mesh",
+      "boxes": {
+        "sparkles": [
+          816,
+          289,
+          288,
+          238
+        ],
+        "mark": [
+          820,
+          283,
+          280,
+          280
+        ],
+        "lockup": [
+          668,
+          598,
+          584,
+          101
+        ],
+        "cta": [
+          660,
+          730,
+          600
+        ]
+      },
+      "sparkles": "assets/visual-kit/materials/sparkles.svg",
+      "slots": [
+        "logo-mark",
+        "logo",
+        "cta"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-message",
+      "html": "assets/templates/html/video-frame-message.html",
+      "use": "Spoken line or on-screen prompt as a chat bubble with an avatar.",
+      "mesh": null,
+      "field": "#F4F6F2",
+      "boxes": {
+        "row": [
+          529,
+          473,
+          1023,
+          100
+        ]
+      },
+      "bubble": {
+        "h": 90,
+        "r": 30,
+        "bg": "#FFFFFF",
+        "pad": "20px 60px",
+        "text": {
+          "sizePx": 42,
+          "lineHeightPx": 50.4
+        }
+      },
+      "avatar": {
+        "size": 100,
+        "r": 9999,
+        "imageSize": 68
+      },
+      "slots": [
+        "headline",
+        "avatar"
+      ]
+    },
+    {
+      "id": "tpl-video-frame-subtitle",
+      "html": "assets/templates/html/video-frame-subtitle.html",
+      "use": "Subtitle band. Transparent field; export PNG with alpha and composite over a frame.",
+      "mesh": null,
+      "field": "transparent",
+      "subtitle": {
+        "bottomInset": 46,
+        "r": 20,
+        "bg": "#000000",
+        "pad": "12px 20px",
+        "text": {
+          "sizePx": 40,
+          "lineHeightPx": 48,
+          "colour": "#FFFFFF",
+          "font": "var(--font-display)"
+        }
+      },
+      "slots": [
+        "subtitle"
+      ]
+    }
+  ]
+}

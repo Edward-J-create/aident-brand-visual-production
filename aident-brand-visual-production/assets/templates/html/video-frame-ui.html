@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — product UI card</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-ui — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: #F0F8F1;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+
+    /* The card is taller than the frame on purpose: the UI runs off the bottom. */
+    .vf-ui {
+      left: 174px;
+      top: 214px;
+      width: 1600px;
+      height: 1024px;
+    }
+    .vf-badge {
+      left: 875px;
+      top: 375px;
+      width: 170px;
+      height: 170px;
+      border-radius: 50px;
+      background-image: linear-gradient(103deg, #07B7A2 0%, #078CDE 56%, #737CFF 100%);
+      box-shadow: 0 12px 36px rgba(7, 140, 222, 0.28);
+      z-index: 3;
+    }
+    .vf-badge img, .vf-badge svg { width: 100px; height: 100px; }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-ui" data-width="1920" data-height="1080">
+    <div class="vf-ui vf-card" data-slot="ui-screenshot">
+      <span class="vf-slot-label">Supplied product UI or authorised screenshot</span>
+    </div>
+    <div class="vf-badge vf-slot" data-slot="icon"></div>
+  </article>
+</body>
+</html>

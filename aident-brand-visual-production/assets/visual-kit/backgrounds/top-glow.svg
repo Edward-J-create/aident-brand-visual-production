@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1724" height="1298" viewBox="0 0 1724 1298" fill="none">
+  <!-- Top bleed glow, narrow. The remaining dark posters.
+       Transparent outside the blurred discs. Recolour by swapping this file.
+       Fill opacity is baked in; do not re-dim the layer in CSS.
+       Padded by 411px on every side so the blur falls off inside the file.
+       Place at (x - 411, y - 411) and let the parent clip. -->
+  <filter id="soft" filterUnits="userSpaceOnUse" x="0" y="0" width="1724" height="1298" color-interpolation-filters="sRGB">
+    <feGaussianBlur stdDeviation="136.87"/>
+  </filter>
+  <circle cx="1092.76" cy="631.242" r="220.242" fill="#FD9CFF" fill-opacity="0.14" filter="url(#soft)"/>
+  <circle cx="618.25" cy="618.25" r="207.25" fill="#1DFF5D" fill-opacity="0.14" filter="url(#soft)"/>
+  <circle cx="843.441" cy="649.183" r="238.183" fill="#1DFFFF" fill-opacity="0.14" filter="url(#soft)"/>
+</svg>

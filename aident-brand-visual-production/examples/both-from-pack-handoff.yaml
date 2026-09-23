@@ -1,0 +1,63 @@
+# Synthetic combined handoff shaped like pack → production
+schema_version: 1
+mode: both
+handoff_id: handoff-syn-both-001
+date: "2026-09-22"
+brand: Northline Labs (synthetic)
+campaign: Dual launch
+owner: synthetic-pm
+approval_owner: synthetic-owner
+brief_version: "1.0"
+final_encode_authorized: false
+editable_source_required: false
+
+approved_copy:
+  - id: copy-headline-01
+    text: "Ship brand kits without the scramble."
+  - id: copy-hook-01
+    text: "Meet the kit that ships with you."
+  - id: copy-cta-01
+    text: "Start free."
+
+source_assets:
+  - id: logo-mark-syn
+    path: "(synthetic — replace with real SVG)"
+    rights: approved-first-party
+  - id: logo-lockup-syn
+    path: "(synthetic — replace with real SVG)"
+    rights: approved-first-party
+
+image_deliverables:
+  - asset_id: visual-feature-poster-00
+    template_id: tpl-feature-poster
+    dimensions: "1242x1660"
+    locale: en
+    primary_copy_id: copy-headline-01
+  - asset_id: visual-x-banner-01
+    template_id: tpl-x-banner
+    dimensions: "2048x900"
+    locale: en
+  - asset_id: visual-avatar-01
+    template_id: tpl-profile-avatar
+    dimensions: "400x400"
+    locale: en
+
+video_deliverables:
+  - asset_id: video-launch-master-01
+    kind: video-kit
+    resolution: "1920x1080"
+    duration_seconds: 30
+    poster_asset_id: video-launch-poster-01
+    poster_template_id: tpl-video-cover
+
+return_format: |
+  return/<handoff_id>/RETURN.md
+  return/<handoff_id>/return-manifest.yaml
+  return/<handoff_id>/media/
+  return/<handoff_id>/docs/
+  return/<handoff_id>/qa/
+
+prohibited_changes:
+  - "Do not invent testimonials or partner logos"
+  - "Do not redraw logo-mark-syn"
+  - "Do not label storyboard as delivered MP4"

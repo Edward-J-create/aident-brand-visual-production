@@ -1,0 +1,185 @@
+/* Landscape kit — the wide formats.
+   Dark full-bleed family: 1920x1080 cover, 2048x900 X, 2048x1152 YouTube,
+   2048x400 LinkedIn. One light family member: the 1270x760 site banner.
+   Shared structure for every member: full-bleed field, a top bleed glow, a
+   mosaic field, a centred logo + title stack, one replaceable media slot, and
+   the grain layer on top. Per-format colours and boxes live in each HTML file
+   and in ../banner-specs.json. Packaged SVG materials live in ../../visual-kit/. */
+
+.ls {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-primary);
+  background: var(--ls-field);
+}
+
+.ls-glow,
+.ls-tiles,
+.ls-bloom {
+  position: absolute;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+/* Grain keeps its own compositing. Never flatten it into the field. */
+.ls-grain {
+  position: absolute;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* Logo and title ride in one centred stack so a missing subcopy does not
+   leave a hole. Each format sets the stack box and the type sizes. */
+.ls-stack {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+}
+
+.ls-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.ls-logo img,
+.ls-logo svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.ls-title {
+  text-align: center;
+  width: 100%;
+}
+
+.ls-headline,
+.ls-accent {
+  margin: 0;
+  font-weight: 400;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The LinkedIn strip runs the headline and the accent on one line. The strip is
+   400px tall, so the row must not wrap: keep the copy short. */
+.ls-title--inline {
+  white-space: nowrap;
+}
+
+.ls-title--inline .ls-headline,
+.ls-title--inline .ls-accent {
+  display: inline;
+}
+
+.ls-title--inline .ls-accent {
+  margin-left: 18px;
+}
+
+.ls-accent--italic { font-style: italic; }
+
+.ls-subcopy {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Media slot. The field colour bleeds back over the bottom edge so a tall
+   screenshot fades out instead of ending on a hard line. */
+.ls-ui {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 3;
+}
+
+.ls-ui img,
+.ls-ui svg {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.ls-ui::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, var(--ls-field) 100%);
+  pointer-events: none;
+}
+
+/* Bottom art band on the light banner. Takes supplied icon or tool art. */
+.ls-band {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 2;
+}
+
+.ls-band img,
+.ls-band svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Stat pair. Optional, and mutually exclusive with the subcopy. */
+.ls-stats {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 36px;
+  z-index: 4;
+}
+
+.ls-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.ls-stat-value {
+  margin: 0;
+  font-weight: 600;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ls-stat-label {
+  margin: 0;
+  font-weight: 400;
+}
+
+.ls-slot-label {
+  font-size: 22px;
+  color: var(--ls-slot-label, rgba(255, 255, 255, 0.72));
+  text-align: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.ls [data-slot="headline-accent"]:empty,
+.ls [data-slot="subcopy"]:empty,
+.ls [data-slot="cta"]:empty { display: none; }
+
+/* An empty stat pair collapses. A filled one hides the subcopy, because the
+   design gives those two the same band. */
+.ls-stats:has([data-slot="stat-value-a"]:empty) { display: none; }
+.ls-stack:has(.ls-stats [data-slot="stat-value-a"]:not(:empty)) .ls-subcopy { display: none; }

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Product poster — light tile field</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="poster-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* Fixed poster type "light-tile" — see ../poster-specs.json */
+    .poster { background: linear-gradient(90deg, rgba(29,222,200,0.6) 0%, rgba(37,172,255,0.6) 49%, rgba(77,89,255,0.6) 100%), #111114; }
+    .poster-panel {
+      background: #FAFFFB;
+      border-radius: 0 0 80px 80px;
+    }
+    .poster-tiles {
+      left: -87px;
+      top: -9px;
+      width: 1416px;
+      height: 1473px;
+      opacity: 0.6;
+      background-image: url("../../visual-kit/materials/tile-field.svg");
+      background-size: 1416px 1473px;
+    }
+    .poster-glow {
+      left: -241px;
+      top: -674px;
+      width: 1724px;
+      height: 1298px;
+      background-image: url("../../visual-kit/backgrounds/top-glow.svg");
+      background-size: 1724px 1298px;
+    }
+    .poster-bloom {
+      left: -338px;
+      top: 161px;
+      width: 1889px;
+      height: 1552px;
+      opacity: 0.7;
+      background-image: url("../../visual-kit/backgrounds/bloom-pastel.svg");
+      background-size: 1889px 1552px;
+    }
+    .poster-title { left: 114px; width: 1014px; }
+    .poster-middle {
+      left: 118px;
+      top: 649px;
+      width: 1015px;
+      height: 643px;
+      padding: 8px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(224,255,252,0.25) 0%, rgba(250,247,255,0.25) 100%);
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 1px 1px 30px rgba(39,141,189,0.3);
+      backdrop-filter: blur(18px);
+    }
+    .poster-middle img, .poster-middle svg { border-radius: 16px; }
+
+    .poster-headline,
+    .poster-headline-accent,
+    .poster-subcopy { font-family: "Noto Sans SC", var(--font-primary); }
+    .poster-headline { background-image: linear-gradient(90deg, #40404A 0%, #030304 100%); font-weight: 500; }
+    .poster-headline-accent { background-image: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%); font-weight: 500; }
+    .poster-subcopy { color: rgba(3,3,4,0.8); }
+    .poster-url { background-image: linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%); }
+  </style>
+</head>
+<body>
+  <article class="poster" data-template-id="tpl-poster-shot-zh" data-poster-type="light-tile" data-width="1242" data-height="1660">
+    <div class="poster-panel">
+      <div class="poster-tiles"></div>
+      <div class="poster-glow"></div>
+      <div class="poster-bloom"></div>
+      <div class="poster-middle" data-slot="ui-screenshot">
+        <span class="poster-middle-label">Supplied product UI, screenshot, or SVG</span>
+      </div>
+    </div>
+    <img class="poster-grain" src="../../visual-kit/materials/grain-overlay.svg" alt="">
+    <div class="poster-title">
+      <h1 class="poster-headline" data-slot="headline" contenteditable="true">今天注册</h1>
+      <p class="poster-headline-accent" data-slot="headline-accent" contenteditable="true">免费领取 100 Credits</p>
+      <p class="poster-subcopy" data-slot="subcopy" contenteditable="true">一个平台连接所有 AI 智能体，注册即可开始。</p>
+    </div>
+    <div class="poster-logo" data-slot="logo"></div>
+    <p class="poster-url" data-slot="url" contenteditable="true"></p>
+  </article>
+</body>
+</html>

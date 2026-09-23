@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — stat pair</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-stat — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: #F0F8F1;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+.vf-tile-field {
+      left: 0px;
+      top: 179px;
+      width: 1920px;
+      height: 723px;
+      background-image: url("../../visual-kit/materials/tile-field-wide.svg");
+      background-size: 1920px 723px;
+      opacity: 0.1;
+    }
+    .vf-tile-field { position: absolute; pointer-events: none; background-repeat: no-repeat; z-index: 1; }
+    .vf-icon-grid {
+      left: 19px;
+      top: 179px;
+      width: 1882px;
+      height: 721px;
+      opacity: 0.05;
+      z-index: 1;
+    }
+    .vf-stat-a { left: 360px; top: 311px; }
+    .vf-stat-b { left: 1080px; top: 436px; }
+    .vf-stat-value { letter-spacing: -0.02em; }
+    .vf-stat-label { letter-spacing: -0.02em; }
+    .vf-stat-a .vf-stat-value {
+      background-image: linear-gradient(90deg, #0BE79A 0%, #009FAB 50%, #0F65DD 100%);
+    }
+    .vf-stat-b .vf-stat-value {
+      background-image: linear-gradient(90deg, #049CE9 0%, #7559F6 60%, #E36DF0 100%);
+    }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-stat" data-width="1920" data-height="1080">
+    <div class="vf-tile-field"></div>
+    <div class="vf-icon-grid vf-slot" data-slot="art-band"></div>
+    <div class="vf-stat vf-stat-a">
+      <p class="vf-stat-value" data-slot="stat-value-a" contenteditable="true">0000+</p>
+      <p class="vf-stat-label" data-slot="stat-label-a" contenteditable="true">Label</p>
+    </div>
+    <div class="vf-stat vf-stat-b">
+      <p class="vf-stat-value" data-slot="stat-value-b" contenteditable="true">00,000+</p>
+      <p class="vf-stat-label" data-slot="stat-label-b" contenteditable="true">Label</p>
+    </div>
+  </article>
+</body>
+</html>

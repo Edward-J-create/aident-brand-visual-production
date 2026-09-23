@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — end card</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-endcard — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: #F0F8F1;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+.vf-mesh {
+      left: -1449px;
+      top: -1861px;
+      width: 4818px;
+      height: 4664px;
+      background-image: url("../../visual-kit/backgrounds/mesh-bloom.svg");
+      background-size: 4818px 4664px;
+    }
+    .vf-sparkles {
+      left: 816px;
+      top: 289px;
+      width: 288px;
+      height: 238px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .vf-mark {
+      left: 820px;
+      top: 283px;
+      width: 280px;
+      height: 280px;
+      filter: drop-shadow(0 18px 54.8px rgba(21, 23, 21, 0.18));
+      z-index: 3;
+    }
+    .vf-lockup {
+      left: 668px;
+      top: 598px;
+      width: 584px;
+      height: 101px;
+      z-index: 3;
+    }
+    .vf-cta {
+      left: 660px;
+      top: 730px;
+      width: 600px;
+      margin: 0;
+      font-size: 32px;
+      line-height: 44px;
+      font-weight: 400;
+      text-align: center;
+      background-image: var(--vf-accent-fill);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-endcard" data-width="1920" data-height="1080">
+    <div class="vf-mesh"></div>
+    <img class="vf-sparkles" src="../../visual-kit/materials/sparkles.svg" alt="">
+    <div class="vf-mark vf-slot" data-slot="logo-mark">
+      <span class="vf-slot-label">Mark</span>
+    </div>
+    <div class="vf-lockup vf-slot" data-slot="logo">
+      <span class="vf-slot-label">Supplied logo lockup</span>
+    </div>
+    <p class="vf-cta" data-slot="cta" contenteditable="true"></p>
+  </article>
+</body>
+</html>

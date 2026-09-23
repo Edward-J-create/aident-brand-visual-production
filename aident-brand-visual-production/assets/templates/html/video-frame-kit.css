@@ -1,0 +1,269 @@
+/* Video frame kit — the 1920x1080 storyboard family.
+   Ten fixed layouts share this chrome: a light field, the packaged mesh bloom,
+   and one purpose per frame (title, logo, caption, UI, stat, chips, label row,
+   end card, message, subtitle). Per-layout boxes live in each HTML file and in
+   ../video-frame-specs.json. Packaged SVG materials live in ../../visual-kit/.
+
+   A storyboard still is a planning input, not a rendered video. */
+
+.vf {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  font-family: var(--font-primary);
+  background: var(--vf-field);
+  color: var(--vf-ink);
+}
+
+.vf-mesh {
+  position: absolute;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.vf > *:not(.vf-mesh) { position: absolute; z-index: 2; }
+
+/* ---------------------------------------------------------------- type */
+.vf-title,
+.vf-caption {
+  margin: 0;
+  font-weight: 400;
+  text-align: center;
+  color: var(--vf-ink);
+}
+
+.vf-title { font-size: 100px; line-height: 120px; }
+.vf-caption { font-size: 80px; line-height: 96px; }
+
+/* Accent runs inline inside the title, so a two-word split stays on one line. */
+.vf-accent {
+  background-image: var(--vf-accent-fill);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---------------------------------------------------------------- slots */
+.vf-slot {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vf-slot img,
+.vf-slot svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* A UI card crops from the top instead of squashing. */
+.vf-card {
+  overflow: hidden;
+  border-radius: 30px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(21, 23, 21, 0.08);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.vf-card img,
+.vf-card svg {
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.vf-slot-label {
+  font-size: 24px;
+  line-height: 1.4;
+  color: rgba(21, 23, 21, 0.45);
+  text-align: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------- stat */
+.vf-stat { display: flex; flex-direction: column; align-items: flex-start; }
+
+.vf-stat-value {
+  margin: 0;
+  font-size: 150px;
+  line-height: 180px;
+  font-weight: 600;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.vf-stat-label {
+  margin: 0;
+  font-size: 76px;
+  line-height: 91.2px;
+  font-weight: 400;
+  color: var(--vf-ink);
+}
+
+/* ---------------------------------------------------------------- chips */
+/* The plate is the field colour with a 20%-opacity gradient laid over it. Keep
+   them as two layers: flattening them stops the field from being recolourable,
+   and putting the field on top washes the gradient out until the white chips
+   disappear into it. */
+.vf-rail {
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--vf-field);
+}
+
+.vf-rail::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: var(--vf-rail-fill);
+  opacity: 0.2;
+}
+
+.vf-chips {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.vf-chip {
+  width: 130px;
+  height: 130px;
+  border-radius: 20px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex: none;
+}
+
+.vf-chip img,
+.vf-chip svg { width: 84px; height: 84px; object-fit: contain; display: block; }
+
+/* An unfilled chip reads as a slot, not as a finished white tile. */
+.vf-chip:empty {
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: inset 0 0 0 2px rgba(21, 23, 21, 0.18);
+}
+
+/* ---------------------------------------------------------------- label row */
+.vf-row-card {
+  border-radius: 30px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vf-tiles { display: flex; align-items: flex-start; gap: 40px; }
+
+.vf-tile { width: 108px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+.vf-tile-plate {
+  width: 108px;
+  height: 108px;
+  border-radius: 25.67px;
+  background: #F9F9F9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vf-tile-plate img,
+.vf-tile-plate svg { width: 72px; height: 72px; object-fit: contain; display: block; }
+
+.vf-tile-label {
+  margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 400;
+  color: #1F1F23;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------- message */
+/* The bubble hugs its copy. Do not give it a fixed width or height. */
+.vf-bubble {
+  border-radius: 30px;
+  background: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(21, 23, 21, 0.08);
+  display: flex;
+  align-items: center;
+  width: max-content;
+  max-width: 1400px;
+  height: auto;
+  padding: 20px 36px;
+}
+
+.vf-bubble p {
+  margin: 0;
+  font-size: 42px;
+  line-height: 50.4px;
+  font-weight: 400;
+  color: var(--vf-ink);
+  width: auto;
+  white-space: pre-wrap;
+}
+
+.vf-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 9999px;
+  background: #5E605B;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.vf-avatar img,
+.vf-avatar svg { width: 68px; height: 68px; object-fit: contain; display: block; }
+
+/* ---------------------------------------------------------------- subtitle */
+/* The subtitle frame is an overlay. Its field is transparent so it can be
+   composited over any other frame, or exported as a PNG with alpha. */
+.vf--overlay { background: transparent; }
+
+.vf-subtitle {
+  border-radius: 20px;
+  background: #000000;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vf-subtitle p {
+  margin: 0;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.vf [data-slot="title-accent"]:empty,
+.vf [data-slot="caption"]:empty,
+.vf [data-slot="cta"]:empty { display: none; }

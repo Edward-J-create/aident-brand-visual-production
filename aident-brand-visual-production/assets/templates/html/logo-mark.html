@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Logo mark slot</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    .canvas {
+      width: 80px;
+      height: 80px;
+      background: transparent;
+    }
+    .canvas::before { display: none; }
+    .mark {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* This template exists to render a supplied mark at 60px, so the mark fills
+       its box instead of resting at whatever size the file happens to be. */
+    .mark img,
+    .mark svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .sr-only { position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0); }
+  </style>
+</head>
+<body>
+  <article class="canvas" data-template-id="tpl-logo-mark" data-width="80" data-height="80">
+    <div class="mark" data-slot="logo-mark">
+      <span class="slot-placeholder-label" style="font-size:10px;">mark</span>
+    </div>
+    <span class="sr-only" data-slot="headline"></span>
+  </article>
+</body>
+</html>

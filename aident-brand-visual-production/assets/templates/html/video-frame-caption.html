@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — mark and caption</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-caption — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: #F0F8F1;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+.vf-mesh {
+      left: -1449px;
+      top: -1861px;
+      width: 4818px;
+      height: 4664px;
+      background-image: url("../../visual-kit/backgrounds/mesh-bloom.svg");
+      background-size: 4818px 4664px;
+    }
+    .vf-mark {
+      left: 855px;
+      top: 344px;
+      width: 210px;
+      height: 210px;
+    }
+    .vf-caption-box {
+      left: 210px;
+      top: 620px;
+      width: 1500px;
+      height: 96px;
+    }
+    .vf-caption { letter-spacing: -0.02em; }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-caption" data-width="1920" data-height="1080">
+    <div class="vf-mesh"></div>
+    <div class="vf-mark vf-slot" data-slot="logo-mark">
+      <span class="vf-slot-label">Mark</span>
+    </div>
+    <div class="vf-caption-box">
+      <p class="vf-caption" data-slot="headline" contenteditable="true">Caption line<span class="vf-accent" data-slot="title-accent" contenteditable="true"></span></p>
+    </div>
+  </article>
+</body>
+</html>

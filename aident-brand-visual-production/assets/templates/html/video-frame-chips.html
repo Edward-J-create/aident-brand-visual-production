@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — mark and icon rail</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-chips — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: #F0F8F1;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+
+    .vf-mark {
+      left: 823px;
+      top: 198px;
+      width: 273px;
+      height: 273px;
+    }
+    .vf-rail {
+      left: 440px;
+      top: 516px;
+      width: 1040px;
+      height: 210px;
+      --vf-rail-fill: linear-gradient(90deg, #01D1B9 0%, #18A7FF 100%);
+    }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-chips" data-width="1920" data-height="1080">
+    <div class="vf-mark vf-slot" data-slot="logo-mark">
+      <span class="vf-slot-label">Mark</span>
+    </div>
+    <div class="vf-rail">
+      <div class="vf-chips">
+        <span class="vf-chip" data-slot="icon-a"></span>
+        <span class="vf-chip" data-slot="icon-b"></span>
+        <span class="vf-chip" data-slot="icon-c"></span>
+        <span class="vf-chip" data-slot="icon-d"></span>
+        <span class="vf-chip" data-slot="icon-e"></span>
+        <span class="vf-chip" data-slot="icon-f"></span>
+      </div>
+    </div>
+  </article>
+</body>
+</html>

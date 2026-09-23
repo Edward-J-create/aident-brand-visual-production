@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1088" height="680" viewBox="0 0 1088 680" fill="none">
+  <!-- Neutral wireframe for previewing a UI slot. Never ship this as product evidence.
+       Replace it with a supplied screenshot or an authorised capture. -->
+  <rect width="1088" height="680" rx="14" fill="#2A2A30"/>
+  <rect x="6" y="6" width="199" height="668" rx="12" fill="#1F1F24"/>
+  <g fill="#3A3A42">
+    <rect x="22" y="24" width="120" height="18" rx="6"/>
+    <rect x="22" y="72" width="160" height="14" rx="5"/>
+    <rect x="22" y="104" width="140" height="14" rx="5"/>
+    <rect x="22" y="136" width="152" height="14" rx="5"/>
+    <rect x="22" y="168" width="128" height="14" rx="5"/>
+  </g>
+  <rect x="213" y="6" width="869" height="668" rx="12" fill="#232329"/>
+  <g fill="#33333B">
+    <rect x="245" y="40" width="300" height="22" rx="7"/>
+    <rect x="245" y="82" width="480" height="14" rx="5"/>
+  </g>
+  <g fill="#2C2C34">
+    <rect x="245" y="140" width="805" height="64" rx="10"/>
+    <rect x="245" y="216" width="805" height="64" rx="10"/>
+    <rect x="245" y="292" width="805" height="64" rx="10"/>
+    <rect x="245" y="368" width="805" height="64" rx="10"/>
+    <rect x="245" y="444" width="805" height="64" rx="10"/>
+  </g>
+  <text x="544" y="620" fill="#5A5A66" font-family="system-ui, sans-serif" font-size="22" text-anchor="middle">placeholder wireframe - replace with a supplied screenshot</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4818" height="4664" viewBox="0 0 4818 4664" fill="none">
+  <!-- Storyboard mesh. Cool cluster upper left, violet cluster lower right.
+       Transparent outside the blurred discs. Recolour by swapping this file.
+       Fill opacity is baked in; do not re-dim the layer in CSS.
+       Padded by 863px on every side so the blur falls off inside the file.
+       Place at (x - 863, y - 863) and let the parent clip. -->
+  <filter id="soft" filterUnits="userSpaceOnUse" x="0" y="0" width="4818" height="4664" color-interpolation-filters="sRGB">
+    <feGaussianBlur stdDeviation="287.56"/>
+  </filter>
+  <circle cx="1979.86" cy="1495.06" r="632.063" fill="#FD9CFF" fill-opacity="0.2" filter="url(#soft)"/>
+  <circle cx="1457.78" cy="2344.75" r="594.779" fill="#1DFF5D" fill-opacity="0.2" filter="url(#soft)"/>
+  <circle cx="1750.61" cy="1967.52" r="683.551" fill="#1DFFFF" fill-opacity="0.2" filter="url(#soft)"/>
+  <circle cx="2803.73" cy="3168.84" r="632.063" fill="#A5D5FF" fill-opacity="0.2" filter="url(#soft)"/>
+  <circle cx="2952.16" cy="2676.38" r="683.551" fill="#6462EA" fill-opacity="0.2" filter="url(#soft)"/>
+  <circle cx="3043.74" cy="2077.78" r="594.779" fill="#1DFF5D" fill-opacity="0.2" filter="url(#soft)"/>
+</svg>

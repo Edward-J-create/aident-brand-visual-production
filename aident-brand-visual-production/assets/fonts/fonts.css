@@ -1,0 +1,29 @@
+/**
+ * Packaged default faces. OFL — see licenses/.
+ * Override by setting fonts.primary / fonts.display in the brand payload,
+ * or by replacing this file's src with another licensed face.
+ * Render copies this file next to the filled HTML.
+ */
+@font-face {
+  font-family: "Outfit";
+  src: url("outfit/Outfit-VariableFont_wght.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Smiley Sans";
+  src: url("smiley-sans/SmileySans-Oblique.ttf.woff2") format("woff2");
+  font-weight: 400;
+  font-style: oblique;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Sans SC";
+  src: url("noto-sans-sc/NotoSansSC-Variable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">LinkedIn cover banner</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="landscape-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-linkedin-banner — 2048x400. One headline row, logo on the right.
+       The 400px strip has no room for a UI slot. See ../banner-specs.json */
+    .ls {
+      --ls-field: #111114;
+      width: 2048px;
+      height: 400px;
+    }
+.ls-glow {
+      left: 608px;
+      top: -1116px;
+      width: 2321px;
+      height: 1748px;
+      background-image: url("../../visual-kit/backgrounds/top-glow-social.svg");
+      background-size: 2321px 1748px;
+    }
+.ls-tiles {
+      left: -64px;
+      top: 228px;
+      width: 2177px;
+      height: 626px;
+      background-image: url("../../visual-kit/materials/tile-field-strip.svg");
+      background-size: 2177px 626px;
+      opacity: 0.8;
+    }
+    .ls-grain {
+      left: -39px;
+      top: -397px;
+      width: 2125px;
+      height: 1249px;
+      opacity: 0.3;
+    }
+    .ls-logo {
+      position: absolute;
+      right: 99px;
+      top: 121px;
+      width: 462px;
+      height: 67px;
+      z-index: 4;
+    }
+    .ls-title {
+      position: absolute;
+      left: 383px;
+      top: 208px;
+      width: 1283px;
+      z-index: 4;
+    }
+    .ls-headline, .ls-accent {
+      font-size: 92px;
+      line-height: 100px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 8px 27.4px rgba(0,0,0,0.3);
+    }
+    .ls-headline { background-image: linear-gradient(90deg, #45F5DE 0%, #83BDFF 50%, #BFA8FF 100%); }
+    .ls-accent {
+      font-family: var(--font-accent-serif);
+      font-size: 100px;
+      letter-spacing: 0.02em;
+      background-image: linear-gradient(90deg, #BEFFF8 0%, #FFFFFF 100%);
+    }
+  </style>
+</head>
+<body>
+  <article class="ls" data-template-id="tpl-linkedin-banner" data-width="2048" data-height="400">
+    <div class="ls-glow"></div>
+    <div class="ls-tiles"></div>
+    <div class="ls-title ls-title--inline">
+      <h1 class="ls-headline" data-slot="headline" contenteditable="true">Headline row</h1>
+      <span class="ls-accent ls-accent--italic" data-slot="headline-accent" contenteditable="true"></span>
+    </div>
+    <div class="ls-logo" data-slot="logo"></div>
+    <img class="ls-grain" src="../../visual-kit/materials/grain-overlay.svg" alt="">
+  </article>
+</body>
+</html>

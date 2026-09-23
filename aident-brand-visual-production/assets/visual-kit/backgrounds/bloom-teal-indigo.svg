@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1930" height="1617" viewBox="0 0 1930 1617" fill="none">
+  <!-- Bloom for the dark tile poster.
+       Transparent outside the blurred ellipse. Recolour by swapping this file.
+       Baked at full strength. Each poster sets its own layer opacity.
+       Padded by 287px on every side so the blur falls off inside the file.
+       Place at (x - 287, y - 287) and let the parent clip. -->
+  <defs>
+    <linearGradient id="g" x1="0.95" y1="0.95" x2="0.05" y2="0.1">
+      <stop offset="0" stop-color="#606AF7"/>
+      <stop offset="0.5144" stop-color="#1992DD"/>
+      <stop offset="1" stop-color="#11C5B0"/>
+    </linearGradient>
+    <filter id="soft" filterUnits="userSpaceOnUse" x="0" y="0" width="1930" height="1617" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="95.5"/>
+    </filter>
+  </defs>
+  <ellipse cx="965" cy="808.5" rx="678" ry="521.5"
+           fill="url(#g)" filter="url(#soft)"/>
+</svg>

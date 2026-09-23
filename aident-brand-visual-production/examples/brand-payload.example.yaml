@@ -1,0 +1,79 @@
+# Synthetic brand payload — replace colors/text/images without editing HTML structure.
+# Companion JSON: brand-payload.example.json
+schema_version: 1
+brand: Northline Labs (synthetic)
+locale: en
+label: "example defaults — not a real client brand"
+
+# Color role overrides → CSS custom properties (see assets/templates/html/tokens.css)
+colors:
+  bg: "#0B1220"
+  surface: "#152238"
+  text: "#F5F7FA"
+  textSecondary: "rgba(245,247,250,0.78)"
+  muted: "rgba(245,247,250,0.55)"
+  accent: "#3D8BFF"
+  accentSoft: "#5EF0D0"
+
+# Font stack overrides (family names or full CSS stacks)
+fonts:
+  primary: "Outfit"
+  display: "Outfit"
+
+# Shared fallbacks (used when a template block omits a field)
+text:
+  headline: "Ship brand kits without the scramble."
+  subcopy: "Template-owned type. Replaceable slots. Packaged sizes."
+  cta: "Start the kit"
+  disclaimer: "Synthetic example — not a customer claim."
+
+images:
+  # Paths are host-local; placeholders OK for dry-runs
+  logo:
+    src: "assets/placeholders/logo-lockup.svg"
+    alt: "Northline Labs"
+  hero:
+    src: "assets/placeholders/hero.jpg"
+    alt: "Product hero"
+  ui-screenshot:
+    src: "assets/placeholders/ui.png"
+    alt: "Product UI"
+  product-art:
+    src: "assets/placeholders/product.png"
+    alt: "Product art"
+  icon:
+    src: "assets/placeholders/icon.svg"
+    alt: "Icon"
+
+# Per-template overrides (optional). Keys are size-kit template IDs.
+templates:
+  tpl-feature-poster:
+    text:
+      headline: "Ship brand kits without the scramble."
+      subcopy: "Feature poster 1242×1660 — logo, url, title and the middle slot are replaceable."
+      cta: "Explore the pack"
+      disclaimer: "Illustrative synthetic copy."
+    images:
+      logo:
+        src: "assets/placeholders/logo-lockup.svg"
+        alt: "Northline Labs"
+      hero:
+        src: "assets/placeholders/hero.jpg"
+        alt: "Hero visual"
+
+  tpl-banner:
+    text:
+      headline: "Marketing banner"
+      subcopy: "1270×760 — logo, title and the art band are replaceable."
+      cta: "Learn more"
+
+  tpl-profile-avatar:
+    images:
+      logo-mark:
+        src: "assets/placeholders/logo-mark.svg"
+        alt: "Mark"
+
+  tpl-linkedin-banner:
+    text:
+      headline: "Northline Labs"
+      subcopy: "Thin strip — large type only."

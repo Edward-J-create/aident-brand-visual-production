@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Feature poster</title>
+  <link rel="stylesheet" href="tokens.css">
+  <style>
+    .canvas {
+      width: 1242px;
+      height: 1660px;
+      padding: calc(min(1242px, 1660px) * var(--safe-margin-ratio));
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2xl);
+    }
+    .slot-logo {
+      height: 80px;
+      width: max-content;
+      max-width: 365px;
+      flex-shrink: 0;
+    }
+    .slot-logo:empty::after,
+    .slot-logo:not(:has(img)) .slot-placeholder-label { display: block; }
+    .copy-block { display: flex; flex-direction: column; gap: var(--space-lg); max-width: 980px; }
+    .text-headline { font-size: 96px; }
+    .text-subcopy { font-size: 32px; max-width: 900px; }
+    .hero {
+      flex: 1;
+      min-height: 640px;
+      border-radius: 24px;
+    }
+    .footer {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: auto;
+    }
+    .text-cta { font-size: 28px; }
+  </style>
+<style id="brand-token-overrides">
+:root {
+  --color-bg: #0B1220;
+  --color-surface: #152238;
+  --color-text: #F5F7FA;
+  --color-text-secondary: rgba(245,247,250,0.78);
+  --color-muted: rgba(245,247,250,0.55);
+  --color-accent: #3D8BFF;
+  --color-accent-soft: #5EF0D0;
+  --font-primary: "Outfit", system-ui, sans-serif;
+  --font-display: "Outfit", system-ui, sans-serif;
+}
+</style>
+</head>
+<body>
+  <article class="canvas" data-template-id="tpl-feature-poster" data-width="1242" data-height="1660">
+    <div class="slot-logo" data-slot="logo"><img data-slot="logo" src="assets/placeholders/logo-lockup.svg" alt="Northline Labs" /></div>
+    <div class="copy-block">
+      <h1 class="text-headline" data-slot="headline" contenteditable="true">Ship brand kits without the scramble.</h1>
+      <p class="text-subcopy" data-slot="subcopy" contenteditable="true">Feature poster 1242×1660 — headline, hero, CTA are slots.</p>
+    </div>
+    <div class="hero slot-media" data-slot="hero"><img data-slot="hero" src="assets/placeholders/hero.jpg" alt="Hero visual" /></div>
+    <div class="footer">
+      <p class="text-cta" data-slot="cta" contenteditable="true">Explore the pack</p>
+      <p class="text-disclaimer" data-slot="disclaimer" contenteditable="true">Illustrative synthetic copy.</p>
+    </div>
+  </article>
+</body>
+</html>

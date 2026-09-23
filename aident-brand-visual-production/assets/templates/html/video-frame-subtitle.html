@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — subtitle overlay</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-subtitle — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: transparent;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+    /* Overlay only. Export as PNG with alpha and composite over another frame.
+       The shared preview backdrop is dropped here so the exported alpha survives. */
+    html, body { background: transparent; }
+    .vf-subtitle {
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 46px;
+      top: auto;
+      max-width: 1600px;
+    }
+    .vf-subtitle p { letter-spacing: -0.01em; }
+    .vf-subtitle--display p { font-family: var(--font-display); }
+  </style>
+</head>
+<body>
+  <article class="vf vf--overlay" data-template-id="tpl-video-frame-subtitle" data-width="1920" data-height="1080">
+    <div class="vf-subtitle vf-subtitle--display">
+      <p data-slot="subtitle" contenteditable="true">One subtitle line</p>
+    </div>
+  </article>
+</body>
+</html>

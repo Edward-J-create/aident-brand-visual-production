@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Product poster — violet</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="poster-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* Fixed poster type "violet" — see ../poster-specs.json */
+    .poster { background: linear-gradient(90deg, #E7FFFE 0%, #F2F9FF 50%, #EFE7FF 100%); }
+    .poster-panel {
+      background: linear-gradient(180deg, #5F17E5 0%, #6F8EFF 100%);
+      border-radius: 0 0 80px 80px;
+    }
+    .poster-glow {
+      left: -241px;
+      top: -674px;
+      width: 1724px;
+      height: 1298px;
+      background-image: url("../../visual-kit/backgrounds/top-glow.svg");
+      background-size: 1724px 1298px;
+    }
+    .poster-bloom {
+      left: -329px;
+      top: 168px;
+      width: 1889px;
+      height: 1552px;
+      opacity: 0.42;
+      background-image: url("../../visual-kit/backgrounds/bloom-violet-cyan.svg");
+      background-size: 1889px 1552px;
+    }
+    .poster-title { left: 147px; width: 948px; }
+    /* The wide plate is fixed decoration. It is not the replaceable slot. */
+    .poster-plate {
+      position: absolute;
+      left: 135px;
+      top: 753px;
+      width: 1640px;
+      height: 1064px;
+      border-radius: 50px;
+      background: linear-gradient(90deg, rgba(118,236,222,0.16) 0%, rgba(132,208,255,0.16) 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .poster-middle[data-slot="icon"] {
+      left: 323px;
+      top: 669px;
+      width: 150px;
+      height: 150px;
+      padding: 35px;
+      border-radius: 40px;
+      background: linear-gradient(90deg, rgba(3,162,143,0.6) 0%, rgba(6,133,211,0.6) 50%, rgba(82,93,242,0.6) 100%);
+      border: none;
+      box-shadow: none;
+    }
+    .poster-middle img,
+    .poster-middle svg { object-fit: contain; border-radius: 0; }
+    .poster-headline { background-image: linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%); font-weight: 500; }
+    .poster-headline-accent { background-image: linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%); font-weight: 500; }
+    .poster-subcopy { color: rgba(255,255,255,0.7); }
+    .poster-url { background-image: linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%); }
+  </style>
+</head>
+<body>
+  <article class="poster" data-template-id="tpl-poster-grid" data-poster-type="violet" data-width="1242" data-height="1660">
+    <div class="poster-panel">
+      <div class="poster-glow"></div>
+      <div class="poster-bloom"></div>
+      <div class="poster-plate"></div>
+      <div class="poster-middle" data-slot="icon">
+        <span class="poster-middle-label">Supplied icon</span>
+      </div>
+    </div>
+    <img class="poster-grain" src="../../visual-kit/materials/grain-overlay.svg" alt="">
+    <div class="poster-title">
+      <h1 class="poster-headline" data-slot="headline" contenteditable="true">Headline line one</h1>
+      <p class="poster-headline-accent" data-slot="headline-accent" contenteditable="true"></p>
+      <p class="poster-subcopy" data-slot="subcopy" contenteditable="true">Supporting line under the headline.</p>
+    </div>
+    <div class="poster-logo" data-slot="logo"></div>
+    <p class="poster-url" data-slot="url" contenteditable="true"></p>
+  </article>
+</body>
+</html>

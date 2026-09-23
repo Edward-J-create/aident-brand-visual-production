@@ -1,0 +1,380 @@
+{
+  "schema_version": 2,
+  "note": "Fixed poster layout. Every type shares the canvas, panel, footer, title, and middle geometry below. Only the colours and the middle box change.",
+  "canvas": {
+    "width": 1242,
+    "height": 1660,
+    "corners": "square, full bleed"
+  },
+  "shared_layout": {
+    "panel": {
+      "x": 0,
+      "y": 0,
+      "width": 1242,
+      "height": 1446,
+      "borderRadius": "0 0 80px 80px"
+    },
+    "footer_band": {
+      "x": 0,
+      "y": 1446,
+      "width": 1242,
+      "height": 214
+    },
+    "title": {
+      "x": 121,
+      "y": 107,
+      "width": 1000,
+      "align": "center",
+      "headline": {
+        "font": "Outfit",
+        "sizePx": 120,
+        "lineHeightPx": 136.8,
+        "letterSpacingPx": -2.4
+      },
+      "subcopy": {
+        "font": "Outfit",
+        "sizePx": 36,
+        "lineHeightPx": 50.4,
+        "letterSpacingPx": -0.36,
+        "maxWidth": 800,
+        "marginTop": 36,
+        "weight": 400
+      }
+    },
+    "logo": {
+      "slot": "logo",
+      "x": 68,
+      "y": 1520,
+      "width": 409,
+      "height": 75
+    },
+    "url": {
+      "slot": "url",
+      "rightInset": 76,
+      "y": 1522,
+      "height": 71,
+      "font": "Outfit",
+      "sizePx": 56,
+      "lineHeightPx": 70.56,
+      "weight": 400,
+      "letterSpacingPx": -1.12
+    },
+    "grain": {
+      "file": "assets/visual-kit/materials/grain-overlay.svg",
+      "x": -46,
+      "y": -87,
+      "width": 1335,
+      "height": 2418,
+      "opacity": 0.25,
+      "blendMode": "overlay"
+    },
+    "middle_slot": {
+      "slot": "ui-screenshot",
+      "accepts": [
+        "supplied product UI image",
+        "authorised product screenshot",
+        "supplied SVG"
+      ],
+      "rejects": [
+        "logo",
+        "logo mark",
+        "logo lockup",
+        "wordmark"
+      ]
+    }
+  },
+  "materials": {
+    "tile_field": "assets/visual-kit/materials/tile-field.svg",
+    "grain": "assets/visual-kit/materials/grain-overlay.svg",
+    "format_rule": "SVG, or lossless transparent WebP for photo textures. Never JPEG, never downscaled."
+  },
+  "types": [
+    {
+      "id": "dark-tile",
+      "templateId": "tpl-feature-poster",
+      "html": "assets/templates/html/feature-poster.html",
+      "panel": "#111114",
+      "panelRadius": "0 0 80px 80px",
+      "tileField": {
+        "file": "assets/visual-kit/materials/tile-field.svg",
+        "x": -87,
+        "y": -9,
+        "width": 1416,
+        "height": 1473,
+        "opacity": 0.4
+      },
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow-wide.svg",
+        "x": -71,
+        "y": -354,
+        "w": 1384,
+        "h": 731
+      },
+      "bloom": {
+        "file": "assets/visual-kit/backgrounds/bloom-teal-indigo.svg",
+        "x": -63,
+        "y": 393,
+        "w": 1356,
+        "h": 1043,
+        "opacity": 0.38
+      },
+      "footer": "linear-gradient(90deg, #E7FFFE 0%, #F2F9FF 50%, #EFE7FF 100%)",
+      "urlFill": "linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%)",
+      "headlineFill": "linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%)",
+      "headlineAccentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+      "headlineWeight": 400,
+      "subcopyColor": "rgba(255,255,255,0.7)",
+      "middleBox": {
+        "x": 128,
+        "y": 657,
+        "w": 994,
+        "h": 623,
+        "r": 12,
+        "bg": "rgba(255,255,255,0.08)",
+        "border": "1px solid rgba(255,255,255,0.28)",
+        "shadow": "none",
+        "pad": 0,
+        "inner_r": 12
+      }
+    },
+    {
+      "id": "light-tile",
+      "templateId": "tpl-poster-shot",
+      "html": "assets/templates/html/poster-shot.html",
+      "panel": "#FAFFFB",
+      "panelRadius": "0 0 80px 80px",
+      "tileField": {
+        "file": "assets/visual-kit/materials/tile-field.svg",
+        "x": -87,
+        "y": -9,
+        "width": 1416,
+        "height": 1473,
+        "opacity": 0.6
+      },
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow.svg",
+        "x": 170,
+        "y": -263,
+        "w": 902,
+        "h": 476
+      },
+      "bloom": {
+        "file": "assets/visual-kit/backgrounds/bloom-pastel.svg",
+        "x": -38,
+        "y": 461,
+        "w": 1289,
+        "h": 952,
+        "opacity": 1
+      },
+      "footer": "linear-gradient(90deg, rgba(29,222,200,0.6) 0%, rgba(37,172,255,0.6) 49%, rgba(77,89,255,0.6) 100%), #111114",
+      "urlFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+      "headlineFill": "linear-gradient(90deg, #40404A 0%, #030304 100%)",
+      "headlineAccentFill": "linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%)",
+      "headlineWeight": 500,
+      "subcopyColor": "rgba(3,3,4,0.8)",
+      "middleBox": {
+        "x": 118,
+        "y": 649,
+        "w": 1015,
+        "h": 643,
+        "r": 22,
+        "bg": "linear-gradient(180deg, rgba(224,255,252,0.25) 0%, rgba(250,247,255,0.25) 100%)",
+        "border": "1px solid rgba(255,255,255,0.8)",
+        "shadow": "1px 1px 30px rgba(39,141,189,0.3)",
+        "pad": 8,
+        "inner_r": 16
+      }
+    },
+    {
+      "id": "indigo",
+      "templateId": "tpl-poster-stage",
+      "html": "assets/templates/html/poster-stage.html",
+      "panel": "linear-gradient(180deg, #1A0063 0%, #3150BE 100%)",
+      "panelRadius": "0 0 80px 80px",
+      "tileField": {
+        "file": "assets/visual-kit/materials/tile-field.svg",
+        "x": -87,
+        "y": -9,
+        "width": 1416,
+        "height": 1473,
+        "opacity": 0.6
+      },
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow.svg",
+        "x": 170,
+        "y": -263,
+        "w": 902,
+        "h": 476
+      },
+      "bloom": {
+        "file": "assets/visual-kit/backgrounds/bloom-cyan-violet.svg",
+        "x": -38,
+        "y": 461,
+        "w": 1289,
+        "h": 952,
+        "opacity": 1
+      },
+      "footer": "linear-gradient(90deg, #E7FFFE 0%, #F2F9FF 50%, #EFE7FF 100%)",
+      "urlFill": "linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%)",
+      "headlineFill": "linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%)",
+      "headlineAccentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+      "headlineWeight": 500,
+      "subcopyColor": "rgba(255,255,255,0.7)",
+      "middleBox": {
+        "x": 191,
+        "y": 859,
+        "w": 860,
+        "h": 515,
+        "r": 40,
+        "bg": "linear-gradient(90deg, rgba(118,236,222,0.16) 0%, rgba(132,208,255,0.16) 100%)",
+        "border": "1px solid rgba(255,255,255,0.22)",
+        "shadow": "none",
+        "pad": 0,
+        "inner_r": 40
+      }
+    },
+    {
+      "id": "midnight",
+      "templateId": "tpl-poster-cluster",
+      "html": "assets/templates/html/poster-cluster.html",
+      "panel": "#111114",
+      "panelRadius": "0 0 80px 80px",
+      "tileField": null,
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow.svg",
+        "x": 170,
+        "y": -263,
+        "w": 902,
+        "h": 476
+      },
+      "bloom": {
+        "file": "assets/visual-kit/backgrounds/bloom-violet-cyan.svg",
+        "x": -38,
+        "y": 461,
+        "w": 1289,
+        "h": 952,
+        "opacity": 0.65
+      },
+      "footer": "linear-gradient(90deg, #E7FFFE 0%, #F2F9FF 50%, #EFE7FF 100%)",
+      "urlFill": "linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%)",
+      "headlineFill": "linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%)",
+      "headlineAccentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+      "headlineWeight": 500,
+      "subcopyColor": "rgba(255,255,255,0.7)",
+      "middleBox": {
+        "x": 192,
+        "y": 678,
+        "w": 859,
+        "h": 384,
+        "r": 30,
+        "bg": "linear-gradient(90deg, rgba(118,236,222,0.16) 0%, rgba(132,208,255,0.16) 100%)",
+        "border": "1px solid rgba(255,255,255,0.22)",
+        "shadow": "none",
+        "pad": 0,
+        "inner_r": 30
+      }
+    },
+    {
+      "id": "violet",
+      "templateId": "tpl-poster-grid",
+      "html": "assets/templates/html/poster-grid.html",
+      "panel": "linear-gradient(180deg, #5F17E5 0%, #6F8EFF 100%)",
+      "panelRadius": "0 0 80px 80px",
+      "tileField": null,
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow.svg",
+        "x": 170,
+        "y": -263,
+        "w": 902,
+        "h": 476
+      },
+      "bloom": {
+        "file": "assets/visual-kit/backgrounds/bloom-violet-cyan.svg",
+        "x": -29,
+        "y": 468,
+        "w": 1289,
+        "h": 952,
+        "opacity": 0.9
+      },
+      "footer": "linear-gradient(90deg, #E7FFFE 0%, #F2F9FF 50%, #EFE7FF 100%)",
+      "urlFill": "linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%)",
+      "headlineFill": "linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%)",
+      "headlineAccentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+      "headlineWeight": 500,
+      "subcopyColor": "rgba(255,255,255,0.7)",
+      "plate": {
+        "x": 135,
+        "y": 753,
+        "w": 1640,
+        "h": 1064,
+        "r": 50,
+        "bg": "linear-gradient(90deg, rgba(118,236,222,0.16) 0%, rgba(132,208,255,0.16) 100%)"
+      },
+      "titleBox": { "x": 147, "y": 107, "w": 948 },
+      "middleBox": {
+        "slot": "icon",
+        "x": 323,
+        "y": 669,
+        "w": 150,
+        "h": 150,
+        "r": 40,
+        "pad": 35,
+        "bg": "linear-gradient(90deg, rgba(3,162,143,0.6) 0%, rgba(6,133,211,0.6) 50%, rgba(82,93,242,0.6) 100%)",
+        "border": "none",
+        "shadow": "none",
+        "inner_r": 40
+      }
+    },
+    {
+      "id": "azure",
+      "templateId": "tpl-poster-table",
+      "html": "assets/templates/html/poster-table.html",
+      "panel": "linear-gradient(180deg, #4E38DD 0%, #00AAFF 100%)",
+      "panelRadius": "0 0 80px 80px",
+      "tileField": null,
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow.svg",
+        "x": 170,
+        "y": -263,
+        "w": 902,
+        "h": 476
+      },
+      "bloom": {
+        "file": "assets/visual-kit/backgrounds/bloom-violet-cyan.svg",
+        "x": -29,
+        "y": 468,
+        "w": 1289,
+        "h": 952,
+        "opacity": 0.9
+      },
+      "footer": "linear-gradient(90deg, #E7FFFE 0%, #F2F9FF 50%, #EFE7FF 100%)",
+      "urlFill": "linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%)",
+      "headlineFill": "linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%)",
+      "headlineAccentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+      "headlineWeight": 500,
+      "subcopyColor": "rgba(255,255,255,0.7)",
+      "plate": {
+        "x": 134,
+        "y": 723,
+        "w": 974,
+        "h": 1240,
+        "r": 40,
+        "bg": "linear-gradient(90deg, rgba(118,236,222,0.16) 0%, rgba(132,208,255,0.16) 100%)"
+      },
+      "titleBox": { "x": 147, "y": 107, "w": 948 },
+      "middleBox": {
+        "slot": "icon",
+        "x": 541,
+        "y": 652,
+        "w": 150,
+        "h": 150,
+        "r": 40,
+        "pad": 35,
+        "bg": "linear-gradient(90deg, rgba(3,162,143,0.6) 0%, rgba(6,133,211,0.6) 50%, rgba(82,93,242,0.6) 100%)",
+        "border": "none",
+        "shadow": "none",
+        "inner_r": 40
+      }
+    }
+  ]
+}

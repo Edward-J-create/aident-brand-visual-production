@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — label row</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-label-row — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: #F0F8F1;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+.vf-mesh {
+      left: -1174px;
+      top: -1278px;
+      width: 4202px;
+      height: 3689px;
+      background-image: url("../../visual-kit/backgrounds/mesh-bloom-wide.svg");
+      background-size: 4202px 3689px;
+    }
+    .vf-word {
+      top: 454px;
+      width: 520px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vf-word-a { left: 88px; }
+    .vf-word-b { left: 1312px; }
+    .vf-word .vf-title { letter-spacing: -0.03em; }
+    .vf-row-card {
+      left: 646px;
+      top: 399px;
+      width: 629px;
+      height: 224px;
+    }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-label-row" data-width="1920" data-height="1080">
+    <div class="vf-mesh"></div>
+    <div class="vf-word vf-word-a">
+      <p class="vf-title vf-accent" data-slot="headline" contenteditable="true">Word</p>
+    </div>
+    <div class="vf-row-card">
+      <div class="vf-tiles">
+        <span class="vf-tile"><span class="vf-tile-plate" data-slot="icon-a"></span><p class="vf-tile-label" data-slot="icon-label-a" contenteditable="true"></p></span>
+        <span class="vf-tile"><span class="vf-tile-plate" data-slot="icon-b"></span><p class="vf-tile-label" data-slot="icon-label-b" contenteditable="true"></p></span>
+        <span class="vf-tile"><span class="vf-tile-plate" data-slot="icon-c"></span><p class="vf-tile-label" data-slot="icon-label-c" contenteditable="true"></p></span>
+        <span class="vf-tile"><span class="vf-tile-plate" data-slot="icon-d"></span><p class="vf-tile-label" data-slot="icon-label-d" contenteditable="true"></p></span>
+      </div>
+    </div>
+    <div class="vf-word vf-word-b">
+      <p class="vf-title vf-accent" data-slot="headline-accent" contenteditable="true">Word</p>
+    </div>
+  </article>
+</body>
+</html>

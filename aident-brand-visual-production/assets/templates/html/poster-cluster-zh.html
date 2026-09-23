@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Product poster — midnight</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="poster-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* Fixed poster type "midnight" — see ../poster-specs.json */
+    .poster { background: linear-gradient(90deg, #E7FFFE 0%, #F2F9FF 50%, #EFE7FF 100%); }
+    .poster-panel {
+      background: #111114;
+      border-radius: 0 0 80px 80px;
+    }
+    .poster-glow {
+      left: -241px;
+      top: -674px;
+      width: 1724px;
+      height: 1298px;
+      background-image: url("../../visual-kit/backgrounds/top-glow.svg");
+      background-size: 1724px 1298px;
+    }
+    .poster-bloom {
+      left: -338px;
+      top: 161px;
+      width: 1889px;
+      height: 1552px;
+      opacity: 0.4;
+      background-image: url("../../visual-kit/backgrounds/bloom-violet-cyan.svg");
+      background-size: 1889px 1552px;
+    }
+    .poster-title { left: 107px; width: 1028px; }
+    .poster-middle {
+      left: 192px;
+      top: 678px;
+      width: 859px;
+      height: 384px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, rgba(118,236,222,0.16) 0%, rgba(132,208,255,0.16) 100%);
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: none;
+      backdrop-filter: blur(18px);
+    }
+
+    .poster-headline,
+    .poster-headline-accent,
+    .poster-subcopy { font-family: "Noto Sans SC", var(--font-primary); }
+    .poster-headline { background-image: linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%); font-weight: 500; }
+    .poster-headline-accent { background-image: linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%); font-weight: 500; }
+    .poster-subcopy { color: rgba(255,255,255,0.7); }
+    .poster-url { background-image: linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%); }
+  </style>
+</head>
+<body>
+  <article class="poster" data-template-id="tpl-poster-cluster-zh" data-poster-type="midnight" data-width="1242" data-height="1660">
+    <div class="poster-panel">
+      <div class="poster-glow"></div>
+      <div class="poster-bloom"></div>
+      <div class="poster-middle" data-slot="ui-screenshot">
+        <span class="poster-middle-label">Supplied product UI, screenshot, or SVG</span>
+      </div>
+    </div>
+    <img class="poster-grain" src="../../visual-kit/materials/grain-overlay.svg" alt="">
+    <div class="poster-title">
+      <h1 class="poster-headline" data-slot="headline" contenteditable="true">一个 Aident 账户</h1>
+      <p class="poster-headline-accent" data-slot="headline-accent" contenteditable="true">告别几十种订阅</p>
+      <p class="poster-subcopy" data-slot="subcopy" contenteditable="true">额度可以跨工具使用，不用再分别付费、分别记账。</p>
+    </div>
+    <div class="poster-logo" data-slot="logo"></div>
+    <p class="poster-url" data-slot="url" contenteditable="true"></p>
+  </article>
+</body>
+</html>

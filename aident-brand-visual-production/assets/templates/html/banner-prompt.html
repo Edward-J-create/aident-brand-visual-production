@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Site banner — One Setup</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="landscape-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-banner-prompt — 1270x760 light banner.
+       Centred lockup, "One Setup," plus an accent run, a prompt pill that hugs
+       its text, then a wrap of agent chips that also hug their labels. */
+    .ls {
+      --ls-field: #F6F9F6;
+      --ls-slot-label: rgba(3,3,4,0.45);
+      width: 1270px;
+      height: 760px;
+      color: #030304;
+    }
+    .ls-bloom {
+      left: -320px;
+      top: -808px;
+      width: 1784px;
+      height: 1307px;
+      background-image: url("../../visual-kit/backgrounds/bloom-light-top.svg");
+      background-size: 1784px 1307px;
+    }
+    .ls-bloom-lower {
+      left: -174px;
+      top: -7px;
+      width: 1910px;
+      height: 1397px;
+      background-image: url("../../visual-kit/backgrounds/bloom-light-lower.svg");
+      background-size: 1910px 1397px;
+    }
+    .ls-bloom-lower { position: absolute; pointer-events: none; background-repeat: no-repeat; z-index: 1; }
+    .ls-grain { left: 0; top: 0; width: 1270px; height: 760px; opacity: 0.6; }
+    .ls-stack {
+      left: 85px;
+      top: 65px;
+      width: 1100px;
+      gap: 18px;
+    }
+    .ls-logo { width: 262px; height: 48px; }
+    .ls-headline {
+      font-size: 72px;
+      line-height: 86px;
+      letter-spacing: -0.03em;
+      font-weight: 500;
+      background-image: none;
+      background-clip: border-box;
+      -webkit-background-clip: border-box;
+      -webkit-text-fill-color: #030304;
+      color: #030304;
+    }
+    .ls-headline .ls-accent {
+      background-image: linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .ls-prompt {
+      position: absolute;
+      left: 50%;
+      top: 285px;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 900px;
+      height: auto;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      box-shadow: 0 8px 24px rgba(3, 3, 4, 0.08);
+      z-index: 4;
+    }
+    .ls-prompt p { margin: 0; font-size: 22px; line-height: 32px; font-weight: 500; white-space: nowrap; color: #030304; }
+    .ls-prompt .ls-accent {
+      margin-left: 8px;
+      background-image: linear-gradient(90deg, #039987 0%, #525DF2 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .ls-agents {
+      position: absolute;
+      left: 242px;
+      top: 419px;
+      width: 787px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-content: flex-start;
+      gap: 10px 12px;
+      z-index: 3;
+    }
+    .ls-agent {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: max-content;
+      height: 52px;
+      padding: 0 16px 0 10px;
+      border-radius: 999px;
+      background: #FFFFFF;
+      box-shadow: 0 4px 16px rgba(3, 3, 4, 0.06);
+      font-size: 20px;
+      line-height: 32px;
+      font-weight: 500;
+    }
+    .ls-agent-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(3, 3, 4, 0.06);
+      flex: none;
+    }
+    .ls-agent-icon img,
+    .ls-agent-icon svg { width: 32px; height: 32px; object-fit: contain; }
+    .ls-agent-more { padding: 0 18px; color: rgba(3, 3, 4, 0.55); }
+  </style>
+</head>
+<body>
+  <article class="ls" data-template-id="tpl-banner-prompt" data-width="1270" data-height="760">
+    <div class="ls-bloom"></div>
+    <div class="ls-bloom-lower"></div>
+    <div class="ls-stack">
+      <div class="ls-logo" data-slot="logo"></div>
+      <h1 class="ls-headline">
+        <span data-slot="headline" contenteditable="true">One Setup,</span>
+        <span class="ls-accent" data-slot="headline-accent" contenteditable="true">Use it Everywhere</span>
+      </h1>
+    </div>
+    <div class="ls-prompt">
+      <p>
+        <span data-slot="kicker" contenteditable="true">start to chat</span>
+        <span class="ls-accent" data-slot="title-accent" contenteditable="true">with your agent</span>
+      </p>
+    </div>
+    <div class="ls-agents">
+      <span class="ls-agent"><span class="ls-agent-icon" data-slot="icon-a"></span><span data-slot="icon-label-a" contenteditable="true">Agent</span></span>
+      <span class="ls-agent"><span class="ls-agent-icon" data-slot="icon-b"></span><span data-slot="icon-label-b" contenteditable="true">Agent</span></span>
+      <span class="ls-agent"><span class="ls-agent-icon" data-slot="icon-c"></span><span data-slot="icon-label-c" contenteditable="true">Agent</span></span>
+      <span class="ls-agent"><span class="ls-agent-icon" data-slot="icon-d"></span><span data-slot="icon-label-d" contenteditable="true">Agent</span></span>
+      <span class="ls-agent"><span class="ls-agent-icon" data-slot="icon-e"></span><span contenteditable="true">Agent</span></span>
+      <span class="ls-agent"><span class="ls-agent-icon" data-slot="icon-f"></span><span contenteditable="true">Agent</span></span>
+      <span class="ls-agent ls-agent-more" data-slot="subcopy" contenteditable="true">And more</span>
+    </div>
+    <img class="ls-grain" src="../../visual-kit/materials/grain-overlay.svg" alt="">
+  </article>
+</body>
+</html>

@@ -1,0 +1,386 @@
+{
+  "schema_version": 1,
+  "note": "Fixed landscape layouts. The dark members share the field, the top bleed glow, the mosaic field, a centred logo and title stack, a centred UI slot, and the grain layer. Only the colours and the boxes change. The light member swaps the glow for two pastel blooms and trades the UI slot for a bottom art band.",
+  "materials": {
+    "grain": "assets/visual-kit/materials/grain-overlay.svg",
+    "tile_field_wide": "assets/visual-kit/materials/tile-field-wide.svg",
+    "tile_field_strip": "assets/visual-kit/materials/tile-field-strip.svg",
+    "format_rule": "SVG, or lossless transparent WebP for photo textures. Never JPEG, never downscaled.",
+    "grain_rule": "Tiled, mix-blend-mode overlay. Opacity is per format. Do not flatten it into the field."
+  },
+  "shared": {
+    "css": "assets/templates/html/landscape-kit.css",
+    "ui_slot": {
+      "slot": "ui-screenshot",
+      "size": [
+        1088,
+        405
+      ],
+      "borderRadius": 13.5,
+      "centred": true,
+      "fill": "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0))",
+      "bottom_fade": "The field colour fades back over the bottom edge so a tall screenshot ends softly.",
+      "accepts": [
+        "supplied product UI",
+        "authorised product screenshot",
+        "supplied SVG"
+      ],
+      "rejects": [
+        "logo",
+        "logo mark",
+        "logo lockup",
+        "wordmark"
+      ]
+    },
+    "headline_letter_spacing": "-0.02em",
+    "font": "Outfit"
+  },
+  "types": [
+    {
+      "id": "tpl-video-cover",
+      "html": "assets/templates/html/video-cover.html",
+      "canvas": [
+        1920,
+        1080
+      ],
+      "field": "#111114",
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow-wide.svg",
+        "x": 268,
+        "y": -341,
+        "w": 1384,
+        "h": 731
+      },
+      "tileFields": [
+        {
+          "file": "assets/visual-kit/materials/tile-field-wide.svg",
+          "x": -128,
+          "y": -25,
+          "w": 2075,
+          "h": 1169,
+          "opacity": 0.8
+        },
+        {
+          "file": "assets/visual-kit/materials/tile-field-strip.svg",
+          "x": -75,
+          "y": 617,
+          "w": 2017,
+          "h": 580,
+          "opacity": 0.8
+        }
+      ],
+      "grain": {
+        "x": 0,
+        "y": -24,
+        "w": 1920,
+        "h": 1128,
+        "opacity": 0.2,
+        "blendMode": "overlay"
+      },
+      "stack": {
+        "x": 488,
+        "y": 140,
+        "width": 945,
+        "gap": 81,
+        "align": "center"
+      },
+      "logo": {
+        "slot": "logo",
+        "w": 555,
+        "h": 80
+      },
+      "headline": {
+        "sizePx": 132,
+        "lineHeightPx": 145.2,
+        "weight": 400,
+        "fill": "linear-gradient(90deg, #EBFEFC 0%, #EBE3FF 100%)",
+        "accentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)"
+      },
+      "ui": {
+        "x": 416,
+        "y": 689,
+        "w": 1088,
+        "h": 405,
+        "r": 13.5
+      },
+      "notes": null
+    },
+    {
+      "id": "tpl-x-banner",
+      "html": "assets/templates/html/x-banner.html",
+      "canvas": [
+        2048,
+        900
+      ],
+      "field": "#111114",
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow-social.svg",
+        "x": 417,
+        "y": -341,
+        "w": 1215,
+        "h": 642
+      },
+      "tileFields": [
+        {
+          "file": "assets/visual-kit/materials/tile-field-strip.svg",
+          "x": -129,
+          "y": 478,
+          "w": 2306,
+          "h": 663,
+          "opacity": 0.8
+        }
+      ],
+      "grain": {
+        "x": -39,
+        "y": -175,
+        "w": 2125,
+        "h": 1249,
+        "opacity": 0.3,
+        "blendMode": "overlay"
+      },
+      "stack": {
+        "x": 668,
+        "y": 143,
+        "width": 711,
+        "gap": 29,
+        "align": "center"
+      },
+      "logo": {
+        "slot": "logo",
+        "w": 511,
+        "h": 74
+      },
+      "headline": {
+        "sizePx": 99.4,
+        "lineHeightPx": 119.3,
+        "weight": 400,
+        "fill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+        "accentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)"
+      },
+      "ui": {
+        "x": 480,
+        "y": 551,
+        "w": 1088,
+        "h": 405,
+        "r": 13.5
+      },
+      "notes": null
+    },
+    {
+      "id": "tpl-youtube-banner",
+      "html": "assets/templates/html/youtube-banner.html",
+      "canvas": [
+        2048,
+        1152
+      ],
+      "field": "#111114",
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow-social.svg",
+        "x": 417,
+        "y": -341,
+        "w": 1215,
+        "h": 642
+      },
+      "tileFields": [
+        {
+          "file": "assets/visual-kit/materials/tile-field-wide.svg",
+          "x": -13,
+          "y": -9,
+          "w": 2075,
+          "h": 1169,
+          "opacity": 0.8
+        }
+      ],
+      "grain": {
+        "x": -39,
+        "y": -49,
+        "w": 2125,
+        "h": 1249,
+        "opacity": 0.3,
+        "blendMode": "overlay"
+      },
+      "stack": {
+        "x": 738,
+        "y": 443,
+        "width": 573,
+        "gap": 22,
+        "align": "center"
+      },
+      "logo": {
+        "slot": "logo",
+        "w": 389,
+        "h": 56
+      },
+      "headline": {
+        "sizePx": 80,
+        "lineHeightPx": 94.4,
+        "weight": 400,
+        "fill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)",
+        "accentFill": "linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%)"
+      },
+      "ui": {
+        "x": 480,
+        "y": 771,
+        "w": 1088,
+        "h": 405,
+        "r": 13.5
+      },
+      "notes": "Logo and title sit inside the YouTube TV safe area (centre 1546x423)."
+    },
+    {
+      "id": "tpl-linkedin-banner",
+      "html": "assets/templates/html/linkedin-banner.html",
+      "canvas": [
+        2048,
+        400
+      ],
+      "field": "#111114",
+      "topGlow": {
+        "file": "assets/visual-kit/backgrounds/top-glow-social.svg",
+        "x": 1161,
+        "y": -563,
+        "w": 1215,
+        "h": 642
+      },
+      "tileFields": [
+        {
+          "file": "assets/visual-kit/materials/tile-field-strip.svg",
+          "x": -64,
+          "y": 228,
+          "w": 2177,
+          "h": 626,
+          "opacity": 0.8
+        }
+      ],
+      "grain": {
+        "x": -39,
+        "y": -397,
+        "w": 2125,
+        "h": 1249,
+        "opacity": 0.3,
+        "blendMode": "overlay"
+      },
+      "logo": {
+        "slot": "logo",
+        "rightInset": 99,
+        "y": 121,
+        "w": 462,
+        "h": 67
+      },
+      "title": {
+        "x": 383,
+        "y": 208,
+        "width": 1283,
+        "inline": true,
+        "headline": {
+          "sizePx": 92,
+          "lineHeightPx": 100,
+          "letterSpacing": "-0.02em",
+          "fill": "linear-gradient(90deg, #45F5DE 0%, #83BDFF 50%, #BFA8FF 100%)"
+        },
+        "accent": {
+          "sizePx": 100,
+          "lineHeightPx": 100,
+          "letterSpacing": "0.02em",
+          "italic": true,
+          "font": "var(--font-accent-serif)",
+          "fill": "linear-gradient(90deg, #BEFFF8 0%, #FFFFFF 100%)"
+        }
+      },
+      "ui": null,
+      "notes": "One headline row, logo on the right. No UI slot: the 400px strip has no room for one. The accent face is a serif italic; override --font-accent-serif to match the brand."
+    },
+    {
+      "id": "tpl-banner",
+      "html": "assets/templates/html/banner.html",
+      "canvas": [
+        1270,
+        760
+      ],
+      "field": "#F6F9F6",
+      "blooms": [
+        {
+          "file": "assets/visual-kit/backgrounds/bloom-light-top.svg",
+          "x": 143,
+          "y": -377,
+          "w": 970,
+          "h": 493
+        },
+        {
+          "file": "assets/visual-kit/backgrounds/bloom-light-lower.svg",
+          "x": 289,
+          "y": 424,
+          "w": 1096,
+          "h": 583
+        }
+      ],
+      "grain": {
+        "x": 0,
+        "y": 0,
+        "w": 1270,
+        "h": 760,
+        "opacity": 0.6,
+        "blendMode": "overlay"
+      },
+      "stack": {
+        "x": 85,
+        "y": 65,
+        "width": 1100,
+        "gap": 18,
+        "align": "center"
+      },
+      "logo": {
+        "slot": "logo",
+        "w": 262,
+        "h": 48
+      },
+      "headline": {
+        "sizePx": 82,
+        "lineHeightPx": 106.6,
+        "letterSpacing": "-0.04em",
+        "weight": 500,
+        "fill": "linear-gradient(90deg, #40404A 0%, #030304 100%)"
+      },
+      "subcopy": {
+        "sizePx": 40,
+        "lineHeightPx": 48,
+        "weight": 500,
+        "fill": "linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%)"
+      },
+      "stats": {
+        "slots": [
+          "stat-value-a",
+          "stat-label-a",
+          "stat-value-b",
+          "stat-label-b"
+        ],
+        "valueSizePx": 78,
+        "valueLineHeightPx": 93.6,
+        "valueWeight": 600,
+        "labelSizePx": 40,
+        "labelLineHeightPx": 64,
+        "gap": 36,
+        "innerGap": 10,
+        "valueFillA": "linear-gradient(90deg, #0BE79A 0%, #009FAB 50%, #0F65DD 100%)",
+        "valueFillB": "linear-gradient(90deg, #049CE9 0%, #7559F6 60%, #E36DF0 100%)",
+        "rule": "The stat pair and the subcopy share one band. Filling the stats hides the subcopy."
+      },
+      "artBand": {
+        "slot": "art-band",
+        "x": -10,
+        "y": 424,
+        "w": 1291,
+        "h": 670,
+        "opacity": 0.75,
+        "accepts": [
+          "supplied icon art",
+          "supplied integration art"
+        ],
+        "rejects": [
+          "third-party marks the brand is not licensed to show"
+        ]
+      },
+      "ui": null
+    }
+  ]
+}

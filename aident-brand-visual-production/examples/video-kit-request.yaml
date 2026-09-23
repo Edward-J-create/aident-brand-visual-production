@@ -1,0 +1,53 @@
+# Synthetic example — not a real client brand
+schema_version: 1
+mode: video-kit
+handoff_id: handoff-syn-video-001
+brief_version: "1.0"
+brand: Northline Labs (synthetic)
+campaign: Loadout launch (synthetic)
+locales: [en]
+final_encode_authorized: false
+
+deliverable:
+  master_asset_id: video-launch-master-01
+  resolution: "1920x1080"
+  aspect_ratio: "16:9"
+  duration_seconds: 30
+  frame_rate: "30"
+  poster_template_id: tpl-video-cover
+  frame_template_id: tpl-video-frame-title
+
+story:
+  hook_copy_id: copy-hook-01
+  hook_copy_text: "Meet the kit that ships with you."
+  end_card_copy_id: copy-cta-01
+  end_card_copy_text: "Start free."
+
+shots:
+  - id: shot-01
+    timecode: "00:00-00:03"
+    communication_job: Hook
+    visual: Product hero still
+    source_type: supplied
+    source_asset_ids: [photo-hero-syn]
+    copy_ids: [copy-hook-01]
+  - id: shot-02
+    timecode: "00:03-00:08"
+    communication_job: Feature beat
+    visual: UI overview — conceptual labeled
+    source_type: generated-concept
+    source_asset_ids: []
+    copy_ids: [copy-feature-01]
+    product_accuracy_notes: "Label as conceptual UI"
+  - id: shot-03
+    timecode: "00:25-00:30"
+    communication_job: End card
+    visual: Logo lockup + CTA
+    source_type: motion-design
+    source_asset_ids: [logo-lockup-syn]
+    copy_ids: [copy-cta-01]
+
+acceptance_checks:
+  - "Storyboard and shot-list present"
+  - "No MP4 claimed while final_encode_authorized is false"
+  - "Poster still 1920x1080 if requested"

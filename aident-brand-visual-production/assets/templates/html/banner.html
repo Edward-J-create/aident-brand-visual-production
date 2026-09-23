@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Site / marketing banner</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="landscape-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-banner — 1270x760, light field. Logo, headline, then either the stat
+       pair or the subcopy, then a supplied art band that bleeds off the bottom.
+       See ../banner-specs.json */
+    .ls {
+      --ls-field: #F6F9F6;
+      --ls-slot-label: rgba(3,3,4,0.45);
+      width: 1270px;
+      height: 760px;
+      color: #030304;
+    }
+.ls-bloom {
+      left: -264px;
+      top: -784px;
+      width: 1784px;
+      height: 1307px;
+      background-image: url("../../visual-kit/backgrounds/bloom-light-top.svg");
+      background-size: 1784px 1307px;
+    }
+.ls-bloom-lower {
+      left: -118px;
+      top: 17px;
+      width: 1910px;
+      height: 1397px;
+      background-image: url("../../visual-kit/backgrounds/bloom-light-lower.svg");
+      background-size: 1910px 1397px;
+    }
+    .ls-bloom-lower { position: absolute; pointer-events: none; background-repeat: no-repeat; z-index: 1; }
+    .ls-band {
+      left: -10px;
+      top: 424px;
+      width: 1291px;
+      height: 670px;
+      opacity: 0.75;
+    }
+    .ls-grain {
+      left: 0;
+      top: 0;
+      width: 1270px;
+      height: 760px;
+      opacity: 0.6;
+    }
+    .ls-stack {
+      left: 85px;
+      top: 65px;
+      width: 1100px;
+      gap: 18px;
+    }
+    .ls-logo { width: 262px; height: 48px; }
+    .ls-headline {
+      font-size: 82px;
+      line-height: 106.6px;
+      letter-spacing: -0.04em;
+      font-weight: 500;
+      background-image: linear-gradient(90deg, #40404A 0%, #030304 100%);
+    }
+    .ls-subcopy {
+      margin-top: 6px;
+      font-size: 40px;
+      line-height: 48px;
+      letter-spacing: -0.01em;
+      font-weight: 500;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(90deg, #039987 0%, #0281D0 49%, #4B56F8 100%);
+    }
+    .ls-stats { margin-top: 21px; }
+    .ls-stat-value { font-size: 78px; line-height: 93.6px; letter-spacing: -0.03em; }
+    .ls-stat-label { font-size: 40px; line-height: 64px; color: #030304; }
+    .ls-stat:first-child .ls-stat-value {
+      background-image: linear-gradient(90deg, #0BE79A 0%, #009FAB 50%, #0F65DD 100%);
+    }
+    .ls-stat:last-child .ls-stat-value {
+      background-image: linear-gradient(90deg, #049CE9 0%, #7559F6 60%, #E36DF0 100%);
+    }
+  </style>
+</head>
+<body>
+  <article class="ls" data-template-id="tpl-banner" data-width="1270" data-height="760">
+    <div class="ls-bloom"></div>
+    <div class="ls-bloom-lower"></div>
+    <div class="ls-band" data-slot="art-band">
+      <span class="ls-slot-label">Supplied icon or integration art. Bleeds off the bottom edge.</span>
+    </div>
+    <div class="ls-stack">
+      <div class="ls-logo" data-slot="logo"></div>
+      <div class="ls-title">
+        <h1 class="ls-headline" data-slot="headline" contenteditable="true">Headline</h1>
+        <p class="ls-subcopy" data-slot="subcopy" contenteditable="true"></p>
+      </div>
+      <div class="ls-stats">
+        <span class="ls-stat">
+          <p class="ls-stat-value" data-slot="stat-value-a" contenteditable="true"></p>
+          <p class="ls-stat-label" data-slot="stat-label-a" contenteditable="true"></p>
+        </span>
+        <span class="ls-stat">
+          <p class="ls-stat-value" data-slot="stat-value-b" contenteditable="true"></p>
+          <p class="ls-stat-label" data-slot="stat-label-b" contenteditable="true"></p>
+        </span>
+      </div>
+    </div>
+    <img class="ls-grain" src="../../visual-kit/materials/grain-overlay.svg" alt="">
+  </article>
+</body>
+</html>

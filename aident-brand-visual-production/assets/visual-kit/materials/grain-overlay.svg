@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1335" height="2418" viewBox="0 0 1335 2418">
+  <!-- Film grain. Composite with mix-blend-mode: overlay; each template sets its
+       own layer opacity. Do not flatten and do not recolour.
+       The noise is clamped to a mean of exactly 0.5 grey with alpha forced to 1,
+       because overlay leaves the base untouched at 0.5 - any other mean shifts
+       the whole panel lighter or darker. -->
+  <filter id="grain" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch" seed="7"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer>
+      <feFuncR type="linear" slope="0.55" intercept="0.225"/>
+      <feFuncG type="linear" slope="0.55" intercept="0.225"/>
+      <feFuncB type="linear" slope="0.55" intercept="0.225"/>
+      <feFuncA type="linear" slope="0" intercept="1"/>
+    </feComponentTransfer>
+  </filter>
+  <rect width="1335" height="2418" filter="url(#grain)"/>
+</svg>

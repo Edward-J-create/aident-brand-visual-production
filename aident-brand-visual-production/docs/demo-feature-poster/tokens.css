@@ -1,0 +1,159 @@
+/**
+ * Shared design tokens for marketing HTML templates.
+ * Defaults are brand-agnostic starters — override via brand payload or
+ * by injecting a <style> block that redefines :root custom properties.
+ * Canonical machine values: ../../tokens/tokens.json
+ * Font override path: see ../../../assets/fonts/licenses/README.md
+ */
+:root {
+  /* Color roles (defaults — swap per brand) */
+  --color-bg: #0F091D;
+  --color-surface: #1A1430;
+  --color-surface-elevated: rgba(255, 255, 255, 0.06);
+  --color-text: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.78);
+  --color-muted: rgba(255, 255, 255, 0.55);
+  --color-accent: #4C5CFF;
+  --color-accent-soft: #1EEAEA;
+  --color-border: rgba(255, 255, 255, 0.14);
+
+  /* Font stacks (host must install Outfit / optional Smiley Sans) */
+  --font-primary: "Outfit", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Smiley Sans", "Outfit", "Noto Sans SC", system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+
+  /* Spacing / safe area (~6% of the shorter side by default) */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --safe-margin-ratio: 0.06;
+  --logo-clearspace-ratio: 0.25;
+
+  /* Decorative (optional; override or hide) */
+  --deco-glow: radial-gradient(ellipse at 70% 20%, rgba(76, 92, 255, 0.35), transparent 55%);
+  --deco-glow-2: radial-gradient(ellipse at 20% 90%, rgba(30, 234, 234, 0.18), transparent 50%);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #111;
+  font-family: var(--font-primary);
+  color: var(--color-text);
+}
+
+.canvas {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+}
+
+.canvas::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--deco-glow), var(--deco-glow-2);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.canvas > * {
+  position: relative;
+  z-index: 1;
+}
+
+[data-slot] {
+  /* Editable contract marker — see references/editable-slots.md */
+}
+
+.slot-logo img,
+img[data-slot="logo"],
+img[data-slot="logo-mark"],
+img[data-slot="logo-lockup"] {
+  display: block;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.slot-media,
+[data-slot="hero"],
+[data-slot="ui-screenshot"],
+[data-slot="product-art"],
+[data-slot="icon"] {
+  background: var(--color-surface-elevated);
+  border: 1px dashed var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.slot-media img,
+[data-slot="hero"] img,
+[data-slot="ui-screenshot"] img,
+[data-slot="product-art"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slot-placeholder-label {
+  font-size: 14px;
+  color: var(--color-muted);
+  text-align: center;
+  padding: var(--space-md);
+  pointer-events: none;
+}
+
+.text-headline {
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.text-subcopy {
+  font-weight: var(--font-weight-regular);
+  line-height: 1.4;
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.text-cta {
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  margin: 0;
+  color: var(--color-accent-soft);
+}
+
+.text-disclaimer {
+  font-weight: var(--font-weight-regular);
+  line-height: 1.35;
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 16px;
+}
+
+.use-display {
+  font-family: var(--font-display);
+}

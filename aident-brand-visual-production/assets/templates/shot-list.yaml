@@ -1,0 +1,19 @@
+schema_version: 1
+document_type: shot-list
+handoff_id: ""
+master_asset_id: ""
+resolution: "1920x1080"
+frame_rate: ""
+duration_seconds: 0
+
+shots: []
+  # - id: shot-01
+  #   timecode: "00:00-00:03"
+  #   communication_job: ""
+  #   visual: ""
+  #   source_type: supplied  # supplied | capture-required | licensed-stock | generated-concept | motion-design
+  #   source_asset_ids: []
+  #   copy_ids: []
+  #   product_accuracy_notes: ""
+  #   template_id: tpl-video-frame-title  # one tpl-video-frame-* id per shot
+  #   status: planned  # planned | ready | blocked | captured

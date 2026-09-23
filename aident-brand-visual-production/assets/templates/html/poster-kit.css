@@ -1,0 +1,152 @@
+/* Poster kit — 1242x1660 fixed layout.
+   Structure is identical for every poster type: full-bleed square canvas,
+   content panel 1242x1446 with a 80px rounded bottom, a 214px footer band
+   carrying the logo and the URL, a centred title block, and one replaceable
+   middle slot. Per-type colours live in each poster HTML file and in
+   ../poster-specs.json. Packaged SVG materials live in ../../visual-kit/. */
+
+.poster {
+  position: relative;
+  width: 1242px;
+  height: 1660px;
+  overflow: hidden;
+  font-family: var(--font-primary);
+}
+
+.poster-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1242px;
+  height: 1446px;
+  overflow: hidden;
+}
+
+.poster-tiles,
+.poster-glow,
+.poster-bloom {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* The bloom is a soft wash over the field, not a second background.
+   Scale it down so the blurred disc stays inside the panel instead of
+   flooding the poster. Each poster still sets its own layer opacity. */
+.poster-bloom {
+  transform: scale(0.72);
+  transform-origin: center center;
+}
+
+/* Grain keeps its own compositing. Never flatten it into the panel. */
+.poster-grain {
+  position: absolute;
+  left: -46px;
+  top: -87px;
+  width: 1335px;
+  height: 2418px;
+  opacity: 0.25;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.poster-title {
+  position: absolute;
+  left: 121px;
+  top: 107px;
+  width: 1000px;
+  text-align: center;
+  z-index: 4;
+}
+
+.poster-headline,
+.poster-headline-accent {
+  margin: 0;
+  font-size: 120px;
+  line-height: 136.8px;
+  letter-spacing: -2.4px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* The two headline lines sit 2px apart, then the subcopy sits 36px below. */
+.poster-headline-accent { margin-top: 2px; }
+
+.poster-subcopy {
+  margin: 36px auto 0;
+  max-width: 800px;
+  font-size: 36px;
+  line-height: 50.4px;
+  letter-spacing: -0.36px;
+  font-weight: 400;
+}
+
+.poster-middle {
+  position: absolute;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.poster-middle img,
+.poster-middle svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.poster-middle-label {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+.poster-logo {
+  position: absolute;
+  left: 68px;
+  top: 1520px;
+  width: 409px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.poster-logo img,
+.poster-logo svg {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  display: block;
+}
+
+.poster-url {
+  position: absolute;
+  right: 76px;
+  top: 1522px;
+  height: 71px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-size: 56px;
+  line-height: 71px;
+  font-weight: 400;
+  letter-spacing: -1.12px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  z-index: 5;
+}
+
+.poster [data-slot="headline-accent"]:empty,
+.poster [data-slot="subcopy"]:empty,
+.poster [data-slot="url"]:empty { display: none; }

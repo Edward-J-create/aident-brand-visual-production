@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">X profile banner</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="landscape-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-x-banner — 2048x900. Fixed layout, see ../banner-specs.json */
+    .ls {
+      --ls-field: #111114;
+      width: 2048px;
+      height: 900px;
+    }
+.ls-glow {
+      left: -136px;
+      top: -894px;
+      width: 2321px;
+      height: 1748px;
+      background-image: url("../../visual-kit/backgrounds/top-glow-social.svg");
+      background-size: 2321px 1748px;
+    }
+.ls-tiles {
+      left: -129px;
+      top: 478px;
+      width: 2306px;
+      height: 663px;
+      background-image: url("../../visual-kit/backgrounds/../materials/tile-field-strip.svg");
+      background-size: 2306px 663px;
+      opacity: 0.8;
+    }
+    .ls-grain {
+      left: -39px;
+      top: -175px;
+      width: 2125px;
+      height: 1249px;
+      opacity: 0.3;
+    }
+    .ls-stack {
+      left: 668px;
+      top: 143px;
+      width: 711px;
+      gap: 29px;
+    }
+    .ls-logo { width: 511px; height: 74px; }
+    .ls-headline, .ls-accent {
+      font-size: 99.4px;
+      line-height: 119.3px;
+      letter-spacing: -0.02em;
+      text-shadow: 0 3px 9px rgba(0,0,0,0.25);
+    }
+    .ls-headline { background-image: linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%); }
+    .ls-accent { background-image: linear-gradient(90deg, #9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%); }
+    .ls-subcopy { font-size: 30px; line-height: 42px; color: rgba(255,255,255,0.7); }
+    .ls-ui {
+      left: 480px;
+      top: 551px;
+      width: 1088px;
+      height: 405px;
+      border-radius: 13.5px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 100%);
+    }
+  </style>
+</head>
+<body>
+  <article class="ls" data-template-id="tpl-x-banner" data-width="2048" data-height="900">
+    <div class="ls-glow"></div>
+    <div class="ls-tiles"></div>
+    <div class="ls-ui" data-slot="ui-screenshot">
+      <span class="ls-slot-label">Supplied product UI, screenshot, or SVG</span>
+    </div>
+    <div class="ls-stack">
+      <div class="ls-logo" data-slot="logo"></div>
+      <div class="ls-title">
+        <h1 class="ls-headline" data-slot="headline" contenteditable="true">Headline line one</h1>
+        <p class="ls-accent" data-slot="headline-accent" contenteditable="true"></p>
+        <p class="ls-subcopy" data-slot="subcopy" contenteditable="true"></p>
+      </div>
+    </div>
+    <img class="ls-grain" src="../../visual-kit/materials/grain-overlay.svg" alt="">
+  </article>
+</body>
+</html>

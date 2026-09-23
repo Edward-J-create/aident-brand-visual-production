@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1784" height="1307" viewBox="0 0 1784 1307" fill="none">
+  <!-- Upper pastel cluster for the light 1270x760 banner.
+       Transparent outside the blurred discs. Recolour by swapping this file.
+       Fill opacity is baked in; do not re-dim the layer in CSS.
+       Padded by 407px on every side so the blur falls off inside the file.
+       Place at (x - 407, y - 407) and let the parent clip. -->
+  <filter id="soft" filterUnits="userSpaceOnUse" x="0" y="0" width="1784" height="1307" color-interpolation-filters="sRGB">
+    <feGaussianBlur stdDeviation="135.7"/>
+  </filter>
+  <circle cx="902.132" cy="643.132" r="236.132" fill="#1DFFFF" fill-opacity="0.2" filter="url(#soft)"/>
+  <circle cx="612.465" cy="692.465" r="205.465" fill="#1DFF5D" fill-opacity="0.2" filter="url(#soft)"/>
+  <circle cx="1158.35" cy="681.345" r="218.345" fill="#FD9CFF" fill-opacity="0.2" filter="url(#soft)"/>
+</svg>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — stacked messages</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-messages — two or three bubbles. Each bubble hugs its line. */
+    .vf {
+      --vf-field: #F4F6F2;
+      --vf-ink: #151715;
+    }
+    .vf-stack {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: max-content;
+      max-width: 1400px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    .vf-stack .vf-bubble:nth-child(even) { align-self: flex-end; }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-messages" data-width="1920" data-height="1080">
+    <div class="vf-stack">
+      <div class="vf-bubble">
+        <p data-slot="headline" contenteditable="true">First line</p>
+      </div>
+      <div class="vf-bubble">
+        <p data-slot="subcopy" contenteditable="true">Second line, as long as the copy needs.</p>
+      </div>
+      <span class="vf-avatar vf-slot" data-slot="avatar"></span>
+    </div>
+  </article>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Logo lockup slot</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    .canvas {
+      width: 365px;
+      height: 80px;
+      min-width: 257px;
+      background: transparent;
+    }
+    .canvas::before { display: none; }
+    .mark {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* This template exists to render a supplied mark at 80px, so the mark fills
+       its box instead of resting at whatever size the file happens to be. */
+    .mark img,
+    .mark svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .wordmark {
+      position: absolute;
+      left: 90px;
+      top: 16px;
+      width: 275px;
+      height: 47px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      font-family: var(--font-primary);
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+  <article class="canvas" data-template-id="tpl-logo-lockup" data-width="365" data-height="80">
+    <div class="mark" data-slot="logo-mark">
+      <span class="slot-placeholder-label" style="font-size:10px;">mark</span>
+    </div>
+    <p class="wordmark" data-slot="wordmark" contenteditable="true">Brand</p>
+  </article>
+</body>
+</html>

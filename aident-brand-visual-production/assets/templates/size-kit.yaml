@@ -1,0 +1,348 @@
+schema_version: 1
+kit_id: aident-marketing-templates-v1
+source:
+  note: Packaged layout templates. Design source files are not included and are not a public dependency.
+note: >
+  Pixel sizes and layout boxes in this kit and in templates/html/ are the public contract.
+  Do not invent alternate sizes for these template IDs.
+  Do not attach, link, or request private design source files.
+
+templates:
+  - id: tpl-video-cover
+    use: Video cover / horizontal video poster
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: visual-marketing
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: Master horizontal poster / cover still.
+
+  - id: tpl-feature-poster
+    use: Product UI poster. Title on top, screenshot in the middle, logo and URL on the footer.
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    poster_type: ui
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: Layout 00 and the matching 中文 layout. Spec is assets/templates/poster-specs.json.
+
+  - id: tpl-poster-shot
+    use: Product screenshot poster on the dark wash, with a light glass card.
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    poster_type: shot
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: Layout 01 and the matching 中文 layout.
+
+  - id: tpl-poster-stage
+    use: Poster with a lower glass stage for a supplied product visual.
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    poster_type: stage
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: Layout 02 and the matching 中文 layout.
+
+  - id: tpl-poster-cluster
+    use: Poster with a wide middle plate for a supplied product visual.
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    poster_type: cluster
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: Layout 03 and the matching 中文 layout.
+
+  - id: tpl-poster-grid
+    use: Poster with one icon plate on the left of the middle band.
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    poster_type: icon-side
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: Layout 04 and the matching 中文 layout. The plate takes a supplied icon, not the footer logo.
+
+  - id: tpl-poster-table
+    use: Poster with one icon plate centered in the middle band.
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    poster_type: icon-center
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: Layout 05 and the matching 中文 layout. The plate takes a supplied icon, not the footer logo.
+
+  - id: tpl-feature-poster-zh
+    use: Product UI poster, 中文
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    locales: [zh]
+    export_formats: [png, jpeg]
+    notes: Same frame as tpl-feature-poster. Default copy is Chinese. Noto Sans SC.
+
+  - id: tpl-poster-shot-zh
+    use: Screenshot poster, 中文
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    locales: [zh]
+    export_formats: [png, jpeg]
+
+  - id: tpl-poster-stage-zh
+    use: Stage poster, 中文
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    locales: [zh]
+    export_formats: [png, jpeg]
+
+  - id: tpl-poster-cluster-zh
+    use: Cluster poster, 中文
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    locales: [zh]
+    export_formats: [png, jpeg]
+
+  - id: tpl-poster-grid-zh
+    use: Side icon poster, 中文
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    locales: [zh]
+    export_formats: [png, jpeg]
+
+  - id: tpl-poster-table-zh
+    use: Center icon poster, 中文
+    width: 1242
+    height: 1660
+    aspect: "621:830"
+    family: visual-marketing
+    locales: [zh]
+    export_formats: [png, jpeg]
+
+  - id: tpl-banner
+    use: Light marketing banner with a stat pair (incl. 中文 variants)
+    width: 1270
+    height: 760
+    aspect: "127:76"
+    family: visual-marketing
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+
+  - id: tpl-banner-prompt
+    use: Light marketing banner with a prompt pill and an art band (incl. 中文 variants)
+    width: 1270
+    height: 760
+    aspect: "127:76"
+    family: visual-marketing
+    locales: [en, zh]
+    export_formats: [png, jpeg]
+    notes: The prompt pill hugs its text. It is the second light 1270×760 banner.
+
+  - id: tpl-x-banner
+    use: X (Twitter) profile banner
+    width: 2048
+    height: 900
+    aspect: "256:112.5"
+    family: social-banner
+    export_formats: [png, jpeg]
+    safe_area: "Platform center crop; keep critical copy away from edges."
+
+  - id: tpl-youtube-banner
+    use: YouTube channel banner
+    width: 2048
+    height: 1152
+    aspect: "16:9"
+    family: social-banner
+    export_formats: [png, jpeg]
+    safe_area: "Respect YouTube TV/desktop/mobile safe zones; keep logo+title in center safe."
+
+  - id: tpl-linkedin-banner
+    use: LinkedIn profile/cover banner
+    width: 2048
+    height: 400
+    aspect: "256:50"
+    family: social-banner
+    export_formats: [png, jpeg]
+
+  - id: tpl-profile-avatar
+    use: Social profile avatar
+    width: 400
+    height: 400
+    aspect: "1:1"
+    family: logo-avatar
+    export_formats: [png]
+    notes: >
+      400×400 is the platform export size. The plain avatar centres a 220×220
+      mark. Do not scale it up to fill the square, and do not shrink it to the
+      poster footer's 75×75 mark. tpl-logo-mark (80×80) is the isolated mark
+      for other placements.
+
+  - id: tpl-logo-mark
+    use: Logo / mark template slot
+    width: 80
+    height: 80
+    aspect: "1:1"
+    family: logo-avatar
+    export_formats: [svg, png]
+    notes: Place real supplied logo; do NOT generative-redraw.
+
+  - id: tpl-logo-lockup
+    use: Logo / lockup (hug width)
+    width_min: 257
+    width_max: 365
+    height: 80
+    aspect: "hug x 80"
+    family: logo-avatar
+    export_formats: [svg, png]
+    notes: Width hugs content ~257–365 px at 80 px height; preserve aspect; place supplied lockup.
+
+  - id: tpl-video-frame-title
+    use: Storyboard title card (mesh field)
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-logo
+    use: Storyboard logo lockup beat
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-caption
+    use: Storyboard mark + caption beat
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-ui
+    use: Storyboard product UI card (flat field)
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-stat
+    use: Storyboard stat pair (flat field)
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-chips
+    use: Storyboard mark + 6-icon rail
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-label-row
+    use: Storyboard word / icon row / word
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-endcard
+    use: Storyboard end card + CTA
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-messages
+    use: Storyboard stacked message bubbles
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Each bubble hugs its copy. A storyboard still is not a final MP4/MOV.
+
+  - id: tpl-video-frame-input
+    use: Storyboard input pill
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      The pill width and height follow the text. A storyboard still is not a final MP4/MOV.
+
+  - id: tpl-video-frame-steps
+    use: Storyboard step list
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Each step pill hugs its label. A storyboard still is not a final MP4/MOV.
+
+  - id: tpl-video-frame-message
+    use: Storyboard prompt-bubble beat
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.
+  - id: tpl-video-frame-subtitle
+    use: Storyboard subtitle overlay (alpha PNG)
+    width: 1920
+    height: 1080
+    aspect: "16:9"
+    family: video-storyboard
+    export_formats: [png]
+    notes: >
+      Storyboard still, one beat per frame. Fixed materials in video-frame-specs.json.
+      A storyboard still is not a final MP4/MOV.

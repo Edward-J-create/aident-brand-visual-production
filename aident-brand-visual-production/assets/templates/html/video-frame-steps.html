@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — step list</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-steps — a vertical list of step pills. Each pill hugs its label. */
+    .vf {
+      --vf-field: #F0F8F1;
+      --vf-ink: #151715;
+    }
+    .vf-mesh {
+      left: -1449px;
+      top: -1861px;
+      width: 4818px;
+      height: 4664px;
+      background-image: url("../../visual-kit/backgrounds/mesh-bloom.svg");
+      background-size: 4818px 4664px;
+    }
+    .vf-steps {
+      left: 1100px;
+      top: 280px;
+      width: max-content;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+    .vf-steps .vf-bubble { border-radius: 24px; padding: 16px 28px; }
+    .vf-steps p { font-size: 32px; line-height: 40px; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-steps" data-width="1920" data-height="1080">
+    <div class="vf-mesh"></div>
+    <div class="vf-steps">
+      <div class="vf-bubble"><p data-slot="headline" contenteditable="true">Step one</p></div>
+      <div class="vf-bubble"><p data-slot="subcopy" contenteditable="true">Step two</p></div>
+      <div class="vf-bubble"><p data-slot="kicker" contenteditable="true">Step three</p></div>
+      <div class="vf-bubble"><p data-slot="cta" contenteditable="true">Step four</p></div>
+    </div>
+  </article>
+</body>
+</html>

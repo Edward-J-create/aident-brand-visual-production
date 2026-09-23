@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Storyboard — message beat</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="video-frame-kit.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    /* tpl-video-frame-message — 1920x1080 storyboard still. See ../video-frame-specs.json */
+    .vf {
+      --vf-field: #F4F6F2;
+      --vf-ink: #151715;
+      --vf-accent-fill: linear-gradient(90deg, #03A28F 0%, #0685D3 49%, #525DF2 100%);
+    }
+    .vf-row {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: max-content;
+      max-width: 1500px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  </style>
+</head>
+<body>
+  <article class="vf" data-template-id="tpl-video-frame-message" data-width="1920" data-height="1080">
+    <div class="vf-row">
+      <div class="vf-bubble">
+        <p data-slot="headline" contenteditable="true">Spoken line or on-screen prompt</p>
+      </div>
+      <span class="vf-avatar vf-slot" data-slot="avatar"></span>
+    </div>
+  </article>
+</body>
+</html>

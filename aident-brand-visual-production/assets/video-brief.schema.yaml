@@ -1,0 +1,67 @@
+schema_version: 1
+brief_type: video-production-contract
+brief_id: ""
+version: ""
+status: draft
+
+objective:
+  purpose: ""
+  audience: ""
+  channel: ""
+  placement: ""
+  desired_action: ""
+  success_condition: ""
+
+deliverable:
+  master_asset_id: ""
+  video_type: ""
+  duration_seconds: 0
+  aspect_ratio: "16:9"
+  resolution: "1920x1080"
+  frame_rate: ""
+  safe_area: ""
+  template_id: tpl-video-frame-title  # one tpl-video-frame-* id per beat; 16x9 aliases the title card
+  cutdowns: []
+
+story:
+  hook_copy_id: ""
+  voiceover_copy_id: ""
+  on_screen_copy_ids: []
+  caption_copy_id: ""
+  end_card_copy_id: ""
+  beats: []
+
+shots: []
+
+direction:
+  visual_treatment: ""
+  motion_behavior: ""
+  transitions: ""
+  logo_entry_exit: ""
+  poster_frame: ""
+  poster_template_id: tpl-video-cover
+  prohibited_treatments: []
+  optional_prompt_direction: ""
+
+audio:
+  voice: ""
+  music: ""
+  sound_design: ""
+  caption_format: ""
+  delivery_requirements: []
+
+delivery:
+  editable_project_required: false
+  editable_format: ""
+  export_formats: [mp4]
+  thumbnail_asset_id: ""
+
+governance:
+  owner: ""
+  approval_owner: ""
+  rights_status: ""
+  releases_required: []
+  accessibility_requirements: []
+  blockers: []
+
+acceptance_checks: []

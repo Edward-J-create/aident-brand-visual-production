@@ -1,0 +1,44 @@
+schema_version: 1
+return_type: visual-production-return
+handoff_id: ""
+brief_version: ""
+skill: aident-brand-visual-production
+skill_version: "0.3.0"
+mode: ""  # image-kit | video-kit | both | qa-only
+created_at: ""
+status_summary: ""  # overall: delivered | blocked | in-production | mixed
+
+assets: []
+  # - asset_id: visual-example-01
+  #   template_id: tpl-feature-poster
+  #   filename: visual-example-01__1242x1660__en.png
+  #   path: media/visual-example-01__1242x1660__en.png
+  #   mime_type: image/png
+  #   bytes: null
+  #   sha256: ""
+  #   dimensions_or_duration: "1242x1660"
+  #   locale: en
+  #   copy_ids: []
+  #   source_asset_ids: []
+  #   production_method: ""
+  #   editable_source_path: ""
+  #   deviations: []
+  #   full_quality_verified: false
+  #   qa:
+  #     result: pending  # pass | fail | pending
+  #     checked_at: ""
+  #     notes: ""
+  #   status: in-production  # in-production | blocked | delivered
+
+docs: []
+  # - path: docs/storyboard.md
+  #   kind: storyboard
+  # - path: docs/shot-list.yaml
+  #   kind: shot-list
+
+blockers: []
+  # - asset_id: ""
+  #   reason: ""
+  #   next_action: ""
+
+notes: ""

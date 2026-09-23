@@ -1,0 +1,48 @@
+# Synthetic example — not a real client brand
+schema_version: 1
+mode: image-kit
+handoff_id: handoff-syn-image-001
+brief_version: "1.0"
+brand: Northline Labs (synthetic)
+campaign: Launch awareness
+locales: [en]
+
+deliverables:
+  - asset_id: visual-feature-poster-00
+    template_id: tpl-feature-poster
+    dimensions: "1242x1660"
+    locale: en
+    primary_copy_id: copy-headline-01
+    primary_copy_text: "Ship brand kits without the scramble."
+    logo_asset_ids: [logo-mark-syn]
+    export_formats: [png]
+    rights_status: approved-first-party
+    approval_owner: synthetic-owner
+    acceptance_checks:
+      - "Export exactly 1242x1660"
+      - "Logo not redrawn; clearspace retained"
+      - "Headline matches copy-headline-01 exactly"
+
+  - asset_id: visual-avatar-01
+    template_id: tpl-profile-avatar
+    dimensions: "400x400"
+    locale: en
+    logo_asset_ids: [logo-mark-syn]
+    export_formats: [png]
+    rights_status: approved-first-party
+    approval_owner: synthetic-owner
+    acceptance_checks:
+      - "Export exactly 400x400"
+
+  - asset_id: visual-linkedin-banner-01
+    template_id: tpl-linkedin-banner
+    dimensions: "2048x400"
+    locale: en
+    primary_copy_id: copy-banner-01
+    primary_copy_text: "Northline Labs"
+    logo_asset_ids: [logo-lockup-syn]
+    export_formats: [png]
+    rights_status: approved-first-party
+    approval_owner: synthetic-owner
+    acceptance_checks:
+      - "Export exactly 2048x400"

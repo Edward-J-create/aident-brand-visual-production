@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="288" height="238" viewBox="0 0 288 238" fill="none">
+  <!-- Decorative sparkle scatter for the storyboard end card. Transparent background. -->
+  <defs>
+    <radialGradient id="s0"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#00B2B2"/></radialGradient>
+    <radialGradient id="s1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#087DE9"/></radialGradient>
+    <radialGradient id="s2"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#00B2B2"/></radialGradient>
+    <radialGradient id="s3"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#A375FF"/></radialGradient>
+    <radialGradient id="s4"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#00B2B2"/></radialGradient>
+    <radialGradient id="s5"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FB7426"/></radialGradient>
+    <radialGradient id="s6"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#087DE9"/></radialGradient>
+  </defs>
+  <path d="M50 0C55.2 29.4 70.6 44.8 100 50C70.6 55.2 55.2 70.6 50 100C44.8 70.6 29.4 55.2 0 50C29.4 44.8 44.8 29.4 50 0Z" transform="translate(237,16) scale(0.2)" fill="url(#s0)"/>
+  <path d="M50 0C55.2 29.4 70.6 44.8 100 50C70.6 55.2 55.2 70.6 50 100C44.8 70.6 29.4 55.2 0 50C29.4 44.8 44.8 29.4 50 0Z" transform="translate(262,67) scale(0.13)" fill="url(#s1)"/>
+  <path d="M50 0C55.2 29.4 70.6 44.8 100 50C70.6 55.2 55.2 70.6 50 100C44.8 70.6 29.4 55.2 0 50C29.4 44.8 44.8 29.4 50 0Z" transform="translate(238,225) scale(0.13)" fill="url(#s2)"/>
+  <path d="M50 0C55.2 29.4 70.6 44.8 100 50C70.6 55.2 55.2 70.6 50 100C44.8 70.6 29.4 55.2 0 50C29.4 44.8 44.8 29.4 50 0Z" transform="translate(16,202) scale(0.25)" fill="url(#s3)"/>
+  <path d="M50 0C55.2 29.4 70.6 44.8 100 50C70.6 55.2 55.2 70.6 50 100C44.8 70.6 29.4 55.2 0 50C29.4 44.8 44.8 29.4 50 0Z" transform="translate(36,0) scale(0.16)" fill="url(#s4)"/>
+  <path d="M50 0C55.2 29.4 70.6 44.8 100 50C70.6 55.2 55.2 70.6 50 100C44.8 70.6 29.4 55.2 0 50C29.4 44.8 44.8 29.4 50 0Z" transform="translate(254,189) scale(0.34)" fill="url(#s5)"/>
+  <path d="M50 0C55.2 29.4 70.6 44.8 100 50C70.6 55.2 55.2 70.6 50 100C44.8 70.6 29.4 55.2 0 50C29.4 44.8 44.8 29.4 50 0Z" transform="translate(0,23) scale(0.33)" fill="url(#s6)"/>
+</svg>

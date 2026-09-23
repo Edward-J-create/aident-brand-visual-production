@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-slot="title-tag">Profile avatar</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="../../fonts/fonts.css">
+  <style>
+    .canvas { width: 400px; height: 400px; }
+    .canvas::before { display: none; }
+    /* 400x400 is the platform export. The plain avatar centres a 220x220 mark;
+       the ring and star variants are larger only because the decoration is part
+       of the artwork. This template has no decoration, so it stays at 220.
+       Do not scale the mark up to the canvas, and do not drop in the poster
+       footer's 75px mark — that number belongs to a 1242-wide poster. */
+    .mark {
+      position: absolute;
+      left: 90px;
+      top: 90px;
+      width: 220px;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .mark img,
+    .mark svg {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+    }
+  </style>
+</head>
+<body>
+  <article class="canvas" data-template-id="tpl-profile-avatar" data-width="400" data-height="400">
+    <div class="decor" data-slot="decor"></div>
+    <div class="mark" data-slot="logo-mark">
+      <span class="slot-placeholder-label">centered mark</span>
+    </div>
+    <h1 class="sr-only" data-slot="headline" contenteditable="true"></h1>
+    <p class="sr-only" data-slot="subcopy" contenteditable="true"></p>
+    <p class="sr-only" data-slot="cta" contenteditable="true"></p>
+    <p class="sr-only" data-slot="disclaimer" contenteditable="true"></p>
+  </article>
+</body>
+</html>

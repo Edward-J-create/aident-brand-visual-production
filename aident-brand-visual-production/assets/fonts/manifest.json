@@ -1,0 +1,47 @@
+{
+  "schema_version": 2,
+  "policy": "Default faces are bundled under SIL OFL so a render does not depend on host-installed fonts. Payload fonts.primary / fonts.display still override the CSS stacks. Do not add a binary without its license file.",
+  "families": [
+    {
+      "id": "outfit",
+      "family": "Outfit",
+      "role": "primary",
+      "weights": [400, 600],
+      "observed_sizes_px": [56, 64, 72, 96],
+      "source": "Packaged marketing templates",
+      "bundled_binary": true,
+      "file": "outfit/Outfit-VariableFont_wght.ttf",
+      "license": "SIL OFL 1.1",
+      "license_ref": "licenses/Outfit-OFL.txt",
+      "upstream": "https://github.com/Outfitio/Outfit-Fonts",
+      "replaceable": true
+    },
+    {
+      "id": "smiley-sans",
+      "family": "Smiley Sans",
+      "role": "accent-display",
+      "weights": [400],
+      "observed_on": ["feature/social posters (occasional Chinese display)"],
+      "bundled_binary": true,
+      "file": "smiley-sans/SmileySans-Oblique.ttf.woff2",
+      "license": "SIL OFL 1.1",
+      "license_ref": "licenses/SmileySans-OFL.txt",
+      "upstream": "https://github.com/atelier-anchor/smiley-sans",
+      "replaceable": true,
+      "notes": "Display/Chinese accent. Set fonts.primary or fonts.display in the payload to swap. Not a substitute for approved body copy in another face unless the brief says so."
+    },
+    {
+      "id": "noto-sans-sc",
+      "family": "Noto Sans SC",
+      "role": "cjk-body",
+      "weights": [400, 600],
+      "bundled_binary": true,
+      "file": "noto-sans-sc/NotoSansSC-Variable.ttf",
+      "license": "SIL OFL 1.1",
+      "license_ref": "licenses/NotoSansSC-OFL.txt",
+      "upstream": "https://github.com/notofonts/noto-cjk",
+      "replaceable": true,
+      "notes": "Chinese body. Outfit stays first in --font-primary so Latin uses Outfit and Han falls through to this face. Payload fonts.primary can replace the whole stack."
+    }
+  ]
+}
