@@ -27,11 +27,13 @@ CASES = (
     {
         "template_id": "tpl-feature-poster",
         "file": "feature-poster.html",
-        "headline": "Ship brand kits without the scramble.",
+        "headline": "Ship brand kits",
+        "headline_accent": "Skip the scramble.",
         "subcopy": "Feature poster 1242×1660 — logo, url, title and the middle slot are replaceable.",
+        "url": "northline.ai",
         "width": 1242,
         "height": 1660,
-        "logo": "logo-lockup.svg",
+        "logo": "logo-lockup-dark.svg",
     },
     {
         "template_id": "tpl-banner",
@@ -40,7 +42,7 @@ CASES = (
         "subcopy": "1270×760 — logo, title and the art band are replaceable.",
         "width": 1270,
         "height": 760,
-        "logo": "logo-lockup.svg",
+        "logo": "logo-lockup-dark.svg",
     },
     {
         "template_id": "tpl-video-cover",
@@ -104,20 +106,38 @@ def main() -> int:
                 filled = html_path.read_text(encoding="utf-8")
                 if case["headline"] not in filled:
                     errors.append(f"{case['template_id']} missing headline")
+                if case.get("headline_accent") and case["headline_accent"] not in filled:
+                    errors.append(f"{case['template_id']} missing accent headline")
                 if case["subcopy"] not in filled:
                     errors.append(f"{case['template_id']} missing subcopy")
+                if case.get("url") and case["url"] not in filled:
+                    errors.append(f"{case['template_id']} missing footer URL")
                 if "#3D8BFF" not in filled or 'id="brand-token-overrides"' not in filled:
                     errors.append(f"{case['template_id']} missing payload color override")
                 if f'data-width="{case["width"]}"' not in filled or f'data-height="{case["height"]}"' not in filled:
                     errors.append(f"{case['template_id']} canvas size drifted")
                 if case["logo"] not in filled:
                     errors.append(f"{case['template_id']} logo slot was not filled")
+                if "placeholder wireframe - replace" in filled.lower():
+                    errors.append(f"{case['template_id']} leaked an instructional placeholder into output")
                 if case["template_id"] == "tpl-feature-poster":
+                    kit_css = (out_dir / "poster-kit.css").read_text(encoding="utf-8")
+                    if 'id="poster-headline-fit"' not in filled:
+                        errors.append("tpl-feature-poster missing the two-line headline fit guard")
+                    if "#9AFFF8 0%, #DAF4FF 49%, #CAB7FF 100%" not in filled:
+                        errors.append("tpl-feature-poster accent line lost its emphasis gradient")
+                    if 'font-variation-settings: "wght" 400' not in kit_css:
+                        errors.append("poster footer URL weight is not pinned to Outfit 400")
+                    if "max-width: 360px" not in kit_css:
+                        errors.append("poster footer URL lacks its long-domain fit boundary")
+                    if "ui-wireframe.svg" not in filled:
+                        errors.append("tpl-feature-poster middle slot was not filled")
+                    if "Supplied product UI, screenshot, or SVG" in filled:
+                        errors.append("tpl-feature-poster retained the empty middle-slot label")
                     if "visual-kit/backgrounds/bloom-teal-indigo.svg" not in filled:
                         errors.append("tpl-feature-poster missing packaged bloom")
                     if "visual-kit/materials/grain-overlay.svg" not in filled:
                         errors.append("tpl-feature-poster missing grain material")
-                    kit_css = (out_dir / "poster-kit.css").read_text(encoding="utf-8")
                     if "mix-blend-mode: overlay" not in kit_css:
                         errors.append("poster grain blend mode was dropped")
                     if "orb-a" in (HTML_DIR / "feature-poster.html").read_text(encoding="utf-8"):
@@ -139,7 +159,7 @@ def main() -> int:
                     print(f"png {case['template_id']}: {case['width']}x{case['height']} inspected")
 
             probe = {
-                "text": {"headline": "Probe", "subcopy": "Probe"},
+                "text": {"headline": "Probe", "subcopy": "Probe", "url": "northline.ai"},
                 "images": {
                     "logo": {"src": "assets/placeholders/logo-lockup.svg", "alt": "Logo"},
                     "ui-screenshot": {"src": "assets/placeholders/logo-lockup.svg", "alt": "wrong"},
@@ -151,6 +171,52 @@ def main() -> int:
                 errors.append("logo file was placed in the poster UI slot")
             if "Supplied product UI, screenshot, or SVG" not in probe_text:
                 errors.append("rejected UI slot did not keep the screenshot well")
+
+            replacement = out_root / "middle-replacement.svg"
+            replacement.write_text(
+                '<svg xmlns="http://www.w3.org/2000/svg" width="994" height="623">'
+                '<rect width="994" height="623" fill="#21c7a8"/></svg>',
+                encoding="utf-8",
+            )
+            replace_probe = {
+                "text": {"headline": "Replaceable middle", "url": "northline.ai"},
+                "images": {
+                    "logo": {"src": "assets/placeholders/logo-lockup-dark.svg", "alt": "Logo"},
+                    "ui-screenshot": {"src": str(replacement), "alt": "Replacement visual"},
+                },
+            }
+            replaced_html = renderer.fill_template(
+                "tpl-feature-poster", replace_probe, out_root / "replace-probe"
+            )
+            replaced_text = replaced_html.read_text(encoding="utf-8")
+            if "middle-replacement.svg" not in replaced_text:
+                errors.append("feature poster middle asset could not be replaced")
+            if "Supplied product UI, screenshot, or SVG" in replaced_text:
+                errors.append("feature poster replacement left the empty-slot label behind")
+
+            overflow_probe = {
+                "text": {
+                    "headline": "This approved headline is intentionally far too long to fit inside the feature poster headline area even after the renderer reaches its minimum approved type size",
+                    "url": "northline.ai",
+                },
+                "images": {
+                    "logo": {"src": "assets/placeholders/logo-lockup-dark.svg", "alt": "Logo"},
+                    "ui-screenshot": {"src": str(replacement), "alt": "Replacement visual"},
+                },
+            }
+            overflow_html = renderer.fill_template(
+                "tpl-feature-poster", overflow_probe, out_root / "overflow-probe"
+            )
+            overflow_ok, overflow_message = renderer.try_png_export(
+                overflow_html,
+                out_root / "overflow-probe.png",
+                1242,
+                1660,
+            )
+            if overflow_ok:
+                errors.append("feature poster exported a headline that exceeds two lines")
+            elif "Playwright not installed" not in overflow_message and "two lines" not in overflow_message:
+                errors.append(f"headline overflow guard failed unexpectedly: {overflow_message}")
     finally:
         os.chdir(previous)
 

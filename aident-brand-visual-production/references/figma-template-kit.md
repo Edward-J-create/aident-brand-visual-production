@@ -22,6 +22,8 @@ Design source files used while authoring the templates are **not** part of the s
 - Primary: **Outfit** 400/600, bundled at `assets/fonts/outfit/`.
 - Display: **Smiley Sans**, bundled at `assets/fonts/smiley-sans/`.
 - Both are OFL and overridable from the brand payload.
+- English feature-poster headline reference: two independently bound lines, Outfit 400, **120px**, **114%** line height, **-2%** tracking. The first line uses the pale `#EBFEFC → #EBE3FF` gradient; an emphasized second line uses `#9AFFF8 → #DAF4FF → #CAB7FF`.
+- Feature-poster footer URL reference: Outfit 400, **56px**, auto line height, **-2%** tracking. Keep that size for short display domains and fit longer domains inside the reserved footer width rather than increasing weight or clipping.
 
 ## Rules
 

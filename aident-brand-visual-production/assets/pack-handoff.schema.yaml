@@ -1,0 +1,60 @@
+schema_version: 1
+handoff_type: brand-marketing-pack-production
+handoff_id: ""
+brief_version: ""
+mode: ""  # image-kit | video-kit | both | qa-only
+brand: ""
+campaign: ""
+owner: ""
+approval_owner: ""
+final_encode_authorized: false
+
+brand_payload:
+  locale: en
+  colors: {}
+  fonts: {}
+
+approved_copy: []
+  # - id: copy-headline-01
+  #   text: Exact approved copy.
+
+source_assets: []
+  # - id: logo-lockup-light
+  #   path: ./sources/logo-lockup-light.svg
+  #   rights: approved-first-party
+  #   kind: logo
+
+image_deliverables: []
+  # - asset_id: visual-feature-01
+  #   template_id: tpl-feature-poster
+  #   dimensions: 1242x1660
+  #   locale: en
+  #   alt_text: ""
+  #   slot_bindings:
+  #     text:
+  #       headline: copy-headline-01
+  #       headline-accent: copy-headline-accent-01  # approved emphasized second line
+  #       url: copy-url-01  # required on feature posters
+  #     images:
+  #       logo: logo-lockup-light
+  #       ui-screenshot: product-ui-01  # replaceable middle visual; required on feature posters
+  #   acceptance_checks: []
+
+video_deliverables: []
+  # - asset_id: video-launch-01
+  #   kind: video-kit
+  #   resolution: 1920x1080
+  #   duration_seconds: 30
+  #   frames:
+  #     - frame_id: video-launch-01-frame-01
+  #       template_id: tpl-video-frame-title
+  #       timecode: 00:00-00:03
+  #       communication_job: State the hook.
+  #       slot_bindings:
+  #         text:
+  #           headline: copy-hook-01
+  #   shots: []
+  #   acceptance_checks: []
+
+prohibited_changes: []
+return_format: return/<handoff_id>/

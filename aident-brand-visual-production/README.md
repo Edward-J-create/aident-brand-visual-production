@@ -24,6 +24,19 @@ npx skills add Edward-J-create/aident-brand-visual-production \
 
 Python 3.9+ runs `scripts/render_html_template.py` and `scripts/validate_package.py`. PNG export needs Playwright and Chromium on the host (`python3 -m pip install playwright && python3 -m playwright install chromium`). A missing browser blocks the PNG and still leaves filled HTML. It does not block the skill from loading.
 
+## Marketing-pack fast path
+
+Turn the frozen pack handoff into per-asset payloads, filled HTML, storyboard/shot-list documents, and a return manifest:
+
+```bash
+python scripts/prepare_pack_run.py \
+  --handoff examples/both-from-pack-handoff.yaml \
+  --out /tmp/abvp-return \
+  --png
+```
+
+The bridge resolves stable approved-copy and source-asset IDs into explicit template slots. It does not invent missing copy or media, and it keeps generated files `in-production` until visual/brand QA is complete. See `references/pack-bridge.md`.
+
 ## Replaceability model
 
 Shared templates are **structures**, not baked brand kits:
@@ -37,6 +50,10 @@ Shared templates are **structures**, not baked brand kits:
 | Sizes | `assets/templates/size-kit.yaml` | Non-negotiable for known `tpl-*` IDs |
 
 Details: `references/editable-slots.md`.
+
+Missing local image files are ignored with a warning instead of rendering broken-image glyphs. Delivered PNGs must contain neither broken images nor instructional slot labels. Supply approved light/dark logo variants for contrasting surfaces; the renderer never recolors a real logo.
+
+Feature posters require an approved lower-right `text.url` and a supplied `images.ui-screenshot` (or `hero`) for the replaceable middle visual. Bind an emphasized second headline line separately as `text.headline-accent` so it receives the brighter gradient. Headlines fit to at most two total lines. The footer URL stays Outfit 400 / 56px for short domains and scales only when a longer display domain exceeds its reserved width.
 
 ## Preferred still pipeline
 

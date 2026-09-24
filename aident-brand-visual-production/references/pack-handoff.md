@@ -22,6 +22,7 @@ Require:
 6. Editable-source and export requirements
 7. Acceptance checklist + prohibited changes
 8. Open blockers, optional creative latitude, return format
+9. Explicit per-template `slot_bindings` for approved copy IDs and source asset IDs (see `assets/pack-handoff.schema.yaml`)
 
 If approvals/rights/sources missing → return `blocked`; do not invent a frozen contract.
 

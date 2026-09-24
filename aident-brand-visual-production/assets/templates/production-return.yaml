@@ -3,7 +3,7 @@ return_type: visual-production-return
 handoff_id: ""
 brief_version: ""
 skill: aident-brand-visual-production
-skill_version: "0.3.0"
+skill_version: "0.4.2"
 mode: ""  # image-kit | video-kit | both | qa-only
 created_at: ""
 status_summary: ""  # overall: delivered | blocked | in-production | mixed

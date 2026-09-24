@@ -3,7 +3,7 @@ name: aident-brand-visual-production
 description: Produce marketing visual result files and video production kits that feed aident-brand-marketing-pack. Create posters, social avatars, banners, feature posters, OG/social cards, and video inputs (storyboards, shot lists, poster frames, motion assets) and, when authorized, final MP4/MOV exports—using the packaged size kit, typography, and HTML layout templates. Use when the user lacks brand visual/video assets, asks to render or export campaign creatives from a pack handoff or visual/video brief, mentions storyboards, shot lists, social avatar/banner, feature poster, or needs PNG/JPEG/SVG/MP4/MOV originals for the marketing pack. Do not use for writing pack copy or cloud pack documents (use aident-brand-marketing-pack); do not use for full brand-identity systems/tokens/brand books (use aident-brand-design-skill); do not use for generic long-form video toolchains unrelated to pack handoffs (use hyperframes-general-video or host video tools). Do not look up, link, or redistribute private design source files.
 license: MIT
 metadata:
-  version: 0.3.0
+  version: 0.4.2
   author: Edward-J-create
 ---
 
@@ -31,8 +31,8 @@ Produce **finished marketing media** (and video production inputs) from a frozen
 2. **Frozen contract first.** Work only from a pack handoff or a completed visual/video brief with asset IDs, exact copy text, dimensions, rights, and acceptance checks. If any P0 field is missing, return `blocked`—do not invent brand facts or copy.
 3. **Templates own structure.** Fixed sizes, type roles, margins, and safe areas come from `assets/templates/`. Do not freestyle a new layout system per job. **Sizes in `size-kit.yaml` are non-negotiable** for known `tpl-*` IDs. Private design source files are not part of this package: do not link them, fetch them, or ask the user to open them.
 4. **Prefer HTML template fill → export.** For static image kits, fill `assets/templates/html/*.html` via brand payload + `scripts/render_html_template.py`, then rasterize on the host (Playwright/Chromium or design-tool export). Do not invent a parallel layout system.
-5. **Replaceable copy and logos; fixed poster materials.** Text and logo slots stay editable. Poster backgrounds, bloom shapes, and the grain layer come from `assets/templates/poster-specs.json` plus the SVG files under `assets/visual-kit/`. Do not repaint a poster with `colors.bg` / `colors.accent` or a few CSS circles. A brand recolor is a replaced SVG, not a flat hex. The middle of a UI poster is a supplied screenshot or an authorized capture. A logo, mark, or lockup never goes in that slot.
-6. **Critical typography is template/editable-layer owned.** Prompts may drive background/scene imagery; they must not be the sole source of headlines, CTAs, disclaimers, or legal lines.
+5. **Replaceable copy and logos; fixed poster materials.** Text and logo slots stay editable. Poster backgrounds, bloom shapes, and the grain layer come from `assets/templates/poster-specs.json` plus the SVG files under `assets/visual-kit/`. Do not repaint a poster with `colors.bg` / `colors.accent` or a few CSS circles. A brand recolor is a replaced SVG, not a flat hex. The middle of a UI poster is the replaceable `ui-screenshot` slot filled by a supplied screenshot or authorized capture. A logo, mark, or lockup never goes in that slot. A feature poster with an empty middle slot stays `blocked`.
+6. **Critical typography is template/editable-layer owned.** Prompts may drive background/scene imagery; they must not be the sole source of headlines, CTAs, disclaimers, or legal lines. Poster headlines have a hard two-line maximum: the renderer may reduce type to the packaged minimum but must block export rather than create a third line or silently truncate approved copy. When the approved emphasis is a second line, bind it separately to `headline-accent`; do not put both lines into `headline`, because the accent slot owns the brighter emphasis gradient. Feature posters require a non-empty lower-right `url` slot. Keep the URL at Outfit 400 / 56px when it fits and reduce size only for long display domains within the reserved footer width.
 7. **Fonts are packaged and replaceable.** Default faces are OFL Outfit (primary) and Smiley Sans (display), with license files under `assets/fonts/`. `@font-face` lives in `fonts.css`. A brand payload may override `--font-primary` / `--font-display`. Do not add a font binary that has no license file.
 8. **Never redraw a real logo** with a generative model. Place supplied logo SVG/PNG into logo slots; preserve intrinsic aspect ratio, clearspace, and approved variants only.
 9. **Never fabricate product UI, metrics, testimonials, partnerships, or third-party marks** as evidence. Conceptual UI must be labeled.
@@ -40,6 +40,7 @@ Produce **finished marketing media** (and video production inputs) from a frozen
 11. **Inspect before `delivered`.** Record MIME, bytes, pixel dimensions or duration, openability, and SHA-256 when bytes are available. Exact export size must match the brief / size-kit.
 12. **No unpaid/unauthorized generation.** Paid image/video APIs, stock licenses, or external publication require explicit user authorization.
 13. **Honest status.** Storyboards and shot lists are never labeled as final video. Deviations from the brief are listed explicitly. Do not upscale, screenshot, or transcode a preview and call it an original.
+14. **No broken or instructional placeholders in result media.** Missing local image paths stay empty/blocked; slot labels such as “supplied screenshot” may appear in editable scaffolds but must not leak into a delivered PNG. Select an approved light/dark logo variant with readable contrast; never recolor a real logo ad hoc.
 
 ## Modes
 
@@ -144,10 +145,12 @@ Poster layouts, field colors, bloom stops, and the grain blend mode are fixed in
 
 ### 1. Intake and mode
 
-- Accept either: (a) pack production handoff package, or (b) filled `visual-brief` / `video-brief` YAML + copy deck + source assets.
+- Accept either: (a) pack production handoff package matching `assets/pack-handoff.schema.yaml`, or (b) filled `visual-brief` / `video-brief` YAML + copy deck + source assets.
 - Initialize run record from `assets/templates/production-return.yaml`.
 - Confirm mode (`image-kit` | `video-kit` | `both` | `qa-only`), locales, authorization for paid tools, and whether editable sources are requested.
 - Ask only if missing answers would change size family, rights, logo treatment, or whether final video encode is in scope.
+
+For a marketing-pack handoff, read `references/pack-bridge.md`. Use `scripts/prepare_pack_run.py` to validate stable IDs, resolve approved copy/source bindings, scaffold per-asset payloads, batch-fill HTML templates, emit storyboard/shot-list documents, and initialize the return manifest. Add `--png` only when the host can launch Playwright/Chromium. Bridge output remains `in-production` until visual/brand QA is completed.
 
 ### 2. Validate frozen inputs
 
@@ -236,6 +239,7 @@ Hand the return package back to **aident-brand-marketing-pack** for original-fil
 | Task | Read |
 |---|---|
 | Every run | `references/pack-handoff.md`, `references/quality-gates.md`, `references/scope-and-modes.md` |
+| Marketing-pack fast path | `references/pack-bridge.md`, `assets/pack-handoff.schema.yaml`, `scripts/prepare_pack_run.py` |
 | Template sizes / zones | `references/figma-template-kit.md`, `assets/templates/size-kit.yaml`, `assets/templates/layout-zones.md` |
 | Still production | `references/image-production.md`, `references/editable-slots.md`, `assets/templates/html/` |
 | HTML fill / tokens | `scripts/render_html_template.py`, `assets/templates/html/tokens.css`, `examples/brand-payload.example.yaml` |

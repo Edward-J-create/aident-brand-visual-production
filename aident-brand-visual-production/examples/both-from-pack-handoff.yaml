@@ -1,63 +1,167 @@
-# Synthetic combined handoff shaped like pack → production
+# Synthetic marketing-pack → visual-production handoff.
+# All referenced files ship with the skill; none represent a real customer product.
 schema_version: 1
+handoff_type: brand-marketing-pack-production
 mode: both
 handoff_id: handoff-syn-both-001
-date: "2026-09-22"
+date: "2026-09-24"
 brand: Northline Labs (synthetic)
 campaign: Dual launch
 owner: synthetic-pm
 approval_owner: synthetic-owner
-brief_version: "1.0"
+brief_version: "1.1"
 final_encode_authorized: false
 editable_source_required: false
 
+brand_payload:
+  locale: en
+  colors:
+    bg: "#0B1220"
+    surface: "#152238"
+    text: "#F5F7FA"
+    textSecondary: "rgba(245,247,250,0.78)"
+    muted: "rgba(245,247,250,0.55)"
+    accent: "#3D8BFF"
+    accentSoft: "#5EF0D0"
+  fonts:
+    primary: Outfit
+    display: Outfit
+
 approved_copy:
   - id: copy-headline-01
-    text: "Ship brand kits without the scramble."
+    text: "Ship brand kits"
+  - id: copy-headline-accent-01
+    text: "Skip the scramble."
+  - id: copy-support-01
+    text: "Approved copy, supplied visuals, packaged sizes."
+  - id: copy-url-01
+    text: "northline.ai"
   - id: copy-hook-01
     text: "Meet the kit that ships with you."
   - id: copy-cta-01
     text: "Start free."
+  - id: copy-frame-02
+    text: "One setup. Every channel."
 
 source_assets:
+  - id: logo-lockup-light-syn
+    path: ../assets/placeholders/logo-lockup.svg
+    rights: approved-first-party
+    kind: logo
+    alt: Northline Labs synthetic lockup
+  - id: logo-lockup-dark-syn
+    path: ../assets/placeholders/logo-lockup-dark.svg
+    rights: approved-first-party
+    kind: logo
+    alt: Northline Labs synthetic dark lockup
   - id: logo-mark-syn
-    path: "(synthetic — replace with real SVG)"
+    path: ../assets/placeholders/logo-mark.svg
     rights: approved-first-party
-  - id: logo-lockup-syn
-    path: "(synthetic — replace with real SVG)"
+    kind: logo
+    alt: Northline Labs synthetic mark
+  - id: ui-wireframe-syn
+    path: ../assets/placeholders/ui-wireframe.svg
     rights: approved-first-party
+    kind: conceptual-ui
+    alt: Synthetic UI wireframe; not product evidence
 
 image_deliverables:
   - asset_id: visual-feature-poster-00
     template_id: tpl-feature-poster
     dimensions: "1242x1660"
     locale: en
-    primary_copy_id: copy-headline-01
-  - asset_id: visual-x-banner-01
-    template_id: tpl-x-banner
-    dimensions: "2048x900"
+    alt_text: "Synthetic feature poster with a conceptual UI wireframe."
+    slot_bindings:
+      text:
+        headline: copy-headline-01
+        headline-accent: copy-headline-accent-01
+        subcopy: copy-support-01
+        url: copy-url-01
+      images:
+        logo: logo-lockup-dark-syn
+        ui-screenshot: ui-wireframe-syn
+    acceptance_checks:
+      - Exact 1242x1660 PNG when raster export is requested.
+      - No broken image references or placeholder instruction labels.
+      - Conceptual UI remains labeled as synthetic in the pack manifest.
+
+  - asset_id: visual-banner-01
+    template_id: tpl-banner
+    dimensions: "1270x760"
     locale: en
+    alt_text: "Synthetic marketing banner with supplied integration art."
+    slot_bindings:
+      text:
+        headline: copy-frame-02
+        subcopy: copy-support-01
+      images:
+        logo: logo-lockup-dark-syn
+        art-band: ui-wireframe-syn
+    acceptance_checks:
+      - Dark logo variant has readable contrast on the light field.
+      - Supplied art fills the lower band without leaking slot instructions.
+
   - asset_id: visual-avatar-01
     template_id: tpl-profile-avatar
     dimensions: "400x400"
     locale: en
+    alt_text: "Synthetic Northline profile mark."
+    slot_bindings:
+      images:
+        logo-mark: logo-mark-syn
+    acceptance_checks:
+      - Mark stays centered with clearspace.
 
 video_deliverables:
   - asset_id: video-launch-master-01
     kind: video-kit
     resolution: "1920x1080"
     duration_seconds: 30
-    poster_asset_id: video-launch-poster-01
-    poster_template_id: tpl-video-cover
+    locale: en
+    frames:
+      - frame_id: video-launch-frame-01
+        template_id: tpl-video-frame-title
+        timecode: "00:00-00:03"
+        communication_job: State the approved hook with one clear idea.
+        slot_bindings:
+          text:
+            headline: copy-hook-01
+      - frame_id: video-launch-frame-02
+        template_id: tpl-video-frame-ui
+        timecode: "00:03-00:07"
+        communication_job: Show the supplied product UI as a conceptual wireframe.
+        slot_bindings:
+          images:
+            ui-screenshot: ui-wireframe-syn
+      - frame_id: video-launch-frame-03
+        template_id: tpl-video-frame-endcard
+        timecode: "00:27-00:30"
+        communication_job: Close on the approved CTA and brand mark.
+        slot_bindings:
+          text:
+            cta: copy-cta-01
+          images:
+            logo-mark: logo-mark-syn
+            logo: logo-lockup-dark-syn
+    shots:
+      - id: shot-01
+        timecode: "00:00-00:03"
+        source_type: motion-design
+        copy_ids: [copy-hook-01]
+        product_accuracy_notes: No product claim is shown.
+      - id: shot-02
+        timecode: "00:03-00:07"
+        source_type: generated-concept
+        source_asset_ids: [ui-wireframe-syn]
+        copy_ids: [copy-frame-02]
+        product_accuracy_notes: Must remain labeled conceptual until replaced by an authorized capture.
+    acceptance_checks:
+      - Storyboard and shot list are present.
+      - Frames are not labeled as a final MP4/MOV.
+      - Final encode remains blocked until separately authorized.
 
-return_format: |
-  return/<handoff_id>/RETURN.md
-  return/<handoff_id>/return-manifest.yaml
-  return/<handoff_id>/media/
-  return/<handoff_id>/docs/
-  return/<handoff_id>/qa/
-
+return_format: return/<handoff_id>/
 prohibited_changes:
-  - "Do not invent testimonials or partner logos"
-  - "Do not redraw logo-mark-syn"
-  - "Do not label storyboard as delivered MP4"
+  - Do not invent testimonials or partner logos.
+  - Do not redraw supplied logos.
+  - Do not label storyboard frames as a delivered MP4.

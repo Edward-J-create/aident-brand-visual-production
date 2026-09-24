@@ -24,48 +24,61 @@ fonts:
 text:
   headline: "Ship brand kits without the scramble."
   subcopy: "Template-owned type. Replaceable slots. Packaged sizes."
+  url: "northline.ai"
   cta: "Start the kit"
   disclaimer: "Synthetic example — not a customer claim."
 
 images:
-  # Paths are host-local; placeholders OK for dry-runs
+  # Synthetic files ship with the package so dry-runs never render broken images.
   logo:
     src: "assets/placeholders/logo-lockup.svg"
     alt: "Northline Labs"
   hero:
-    src: "assets/placeholders/hero.jpg"
-    alt: "Product hero"
+    src: "assets/placeholders/ui-wireframe.svg"
+    alt: "Synthetic product UI wireframe"
   ui-screenshot:
-    src: "assets/placeholders/ui.png"
-    alt: "Product UI"
+    src: "assets/placeholders/ui-wireframe.svg"
+    alt: "Synthetic product UI wireframe"
   product-art:
-    src: "assets/placeholders/product.png"
-    alt: "Product art"
+    src: "assets/placeholders/ui-wireframe.svg"
+    alt: "Synthetic product wireframe"
   icon:
-    src: "assets/placeholders/icon.svg"
-    alt: "Icon"
+    src: "assets/placeholders/logo-mark.svg"
+    alt: "Synthetic icon"
+  art-band:
+    src: "assets/placeholders/ui-wireframe.svg"
+    alt: "Synthetic integration art"
 
 # Per-template overrides (optional). Keys are size-kit template IDs.
 templates:
   tpl-feature-poster:
     text:
-      headline: "Ship brand kits without the scramble."
+      headline: "Ship brand kits"
+      headline-accent: "Skip the scramble."
       subcopy: "Feature poster 1242×1660 — logo, url, title and the middle slot are replaceable."
+      url: "northline.ai"
       cta: "Explore the pack"
       disclaimer: "Illustrative synthetic copy."
     images:
       logo:
-        src: "assets/placeholders/logo-lockup.svg"
+        src: "assets/placeholders/logo-lockup-dark.svg"
         alt: "Northline Labs"
       hero:
-        src: "assets/placeholders/hero.jpg"
-        alt: "Hero visual"
+        src: "assets/placeholders/ui-wireframe.svg"
+        alt: "Synthetic product UI wireframe"
 
   tpl-banner:
     text:
       headline: "Marketing banner"
       subcopy: "1270×760 — logo, title and the art band are replaceable."
       cta: "Learn more"
+    images:
+      logo:
+        src: "assets/placeholders/logo-lockup-dark.svg"
+        alt: "Northline Labs"
+      art-band:
+        src: "assets/placeholders/ui-wireframe.svg"
+        alt: "Synthetic integration art"
 
   tpl-profile-avatar:
     images:

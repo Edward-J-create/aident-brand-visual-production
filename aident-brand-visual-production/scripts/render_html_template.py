@@ -132,6 +132,91 @@ IMAGE_SLOTS = (
 )
 
 
+POSTER_HEADLINE_FIT_SCRIPT = r'''<script id="poster-headline-fit">
+(() => {
+  const START_SIZE = 120;
+  const MIN_SIZE = 72;
+  const STEP = 2;
+  const URL_START_SIZE = 56;
+  const URL_MIN_SIZE = 36;
+
+  function lineCount(element) {
+    if (!element || !element.textContent.trim()) return 0;
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    const tops = [];
+    for (const rect of range.getClientRects()) {
+      if (rect.width <= 0 || rect.height <= 0) continue;
+      if (!tops.some((top) => Math.abs(top - rect.top) < 2)) tops.push(rect.top);
+    }
+    return tops.length;
+  }
+
+  function fitPosterHeadline() {
+    const title = document.querySelector('.poster-title');
+    const headline = title && title.querySelector('[data-slot="headline"]');
+    const accent = title && title.querySelector('[data-slot="headline-accent"]');
+    if (!title || !headline) return true;
+
+    const hasAccent = Boolean(accent && accent.textContent.trim());
+    headline.style.whiteSpace = hasAccent ? 'nowrap' : 'normal';
+    if (accent) accent.style.whiteSpace = hasAccent ? 'nowrap' : 'normal';
+
+    const fits = () => {
+      const primaryLines = lineCount(headline);
+      const accentLines = lineCount(accent);
+      const primaryWidthFits = headline.scrollWidth <= headline.clientWidth + 1;
+      const accentWidthFits = !hasAccent || accent.scrollWidth <= accent.clientWidth + 1;
+      return hasAccent
+        ? primaryLines <= 1 && accentLines <= 1 && primaryWidthFits && accentWidthFits
+        : primaryLines <= 2 && primaryWidthFits;
+    };
+
+    let size = START_SIZE;
+    for (; size >= MIN_SIZE; size -= STEP) {
+      title.style.setProperty('--poster-headline-size', `${size}px`);
+      if (fits()) break;
+    }
+
+    const ok = fits();
+    title.dataset.headlineFit = ok ? 'ok' : 'overflow';
+    title.dataset.headlineLines = String(lineCount(headline) + lineCount(accent));
+    title.dataset.headlineSize = `${Math.max(size, MIN_SIZE)}px`;
+    return ok;
+  }
+
+  function fitPosterUrl() {
+    const url = document.querySelector('.poster-url[data-slot="url"]');
+    if (!url || !url.textContent.trim()) return true;
+    let size = URL_START_SIZE;
+    for (; size >= URL_MIN_SIZE; size -= 1) {
+      url.style.setProperty('--poster-url-size', `${size}px`);
+      if (url.scrollWidth <= url.clientWidth + 1) break;
+    }
+    const ok = url.scrollWidth <= url.clientWidth + 1;
+    url.dataset.urlFit = ok ? 'ok' : 'overflow';
+    url.dataset.urlSize = `${Math.max(size, URL_MIN_SIZE)}px`;
+    return ok;
+  }
+
+  function fitPosterTypography() {
+    const headlineOk = fitPosterHeadline();
+    const urlOk = fitPosterUrl();
+    return headlineOk && urlOk;
+  }
+
+  window.__fitPosterHeadline = fitPosterHeadline;
+  window.__fitPosterUrl = fitPosterUrl;
+  window.__fitPosterTypography = fitPosterTypography;
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(fitPosterTypography);
+  } else {
+    fitPosterTypography();
+  }
+})();
+</script>'''
+
+
 def load_payload(path: Path) -> dict[str, Any]:
     text = path.read_text(encoding="utf-8")
     if path.suffix.lower() == ".json":
@@ -340,6 +425,21 @@ def inject_override_css(html: str, css: str) -> str:
     return block + html
 
 
+def inject_poster_headline_fit(html: str) -> str:
+    """Keep poster headlines to two visible lines without silently truncating copy."""
+    if 'class="poster"' not in html or 'id="poster-headline-fit"' in html:
+        return html
+    if re.search(r"</body>", html, re.I):
+        return re.sub(
+            r"</body>",
+            POSTER_HEADLINE_FIT_SCRIPT + "\n</body>",
+            html,
+            count=1,
+            flags=re.I,
+        )
+    return html + "\n" + POSTER_HEADLINE_FIT_SCRIPT + "\n"
+
+
 def rewrite_tokens_css_href(html: str, out_dir: Path) -> str:
     """Copy tokens.css, fonts.css, and licensed font files beside the export."""
     src = HTML_DIR / "tokens.css"
@@ -384,7 +484,7 @@ def copy_visual_kit(html: str, out_dir: Path) -> str:
     return html
 
 
-SCREEN_SLOTS = {"ui-screenshot", "hero", "product-art", "icon"}
+SCREEN_SLOTS = {"ui-screenshot", "hero", "product-art", "icon", "art-band"}
 LOGO_NAME_MARKERS = ("logo", "lockup", "wordmark", "logomark")
 
 
@@ -392,6 +492,23 @@ def image_src(val: Any) -> str:
     if isinstance(val, dict):
         return str(val.get("src") or val.get("path") or "")
     return str(val or "")
+
+
+def resolve_image_src(src: str) -> str:
+    """Resolve local payload paths and refuse broken local image references."""
+    if not src:
+        return ""
+    if src.startswith(("http://", "https://", "data:", "file:")):
+        return src
+
+    candidate = Path(src).expanduser()
+    candidates = [candidate] if candidate.is_absolute() else [Path.cwd() / candidate, ROOT / candidate]
+    for path in candidates:
+        if path.is_file():
+            return str(path.resolve())
+
+    print(f"warning: image source ignored because it does not exist: {src}", file=sys.stderr)
+    return ""
 
 
 def normalize_src(src: str) -> str:
@@ -455,7 +572,9 @@ def fill_template(template_id: str, payload: dict[str, Any], out_dir: Path) -> P
     for slot in IMAGE_SLOTS:
         if slot in images:
             val = images[slot]
-            src = image_src(val)
+            src = resolve_image_src(image_src(val))
+            if not src:
+                continue
             alt = val.get("alt") or "" if isinstance(val, dict) else ""
             if slot in SCREEN_SLOTS and is_logo_standin(src, logo_srcs):
                 print(
@@ -464,16 +583,18 @@ def fill_template(template_id: str, payload: dict[str, Any], out_dir: Path) -> P
                 )
                 continue
             if isinstance(val, dict):
-                html = set_image_slot(html, slot, val.get("src") or val.get("path"), alt)
+                html = set_image_slot(html, slot, src, alt)
             else:
-                html = set_image_slot(html, slot, val)
+                html = set_image_slot(html, slot, src)
 
     # Logo convenience: images.logo applies to logo / logo-mark / logo-lockup if those unset
     if "logo" in images:
         for extra in ("logo-mark", "logo-lockup"):
             if extra not in images:
                 val = images["logo"]
-                src_v = val.get("src") if isinstance(val, dict) else val
+                src_v = resolve_image_src(image_src(val))
+                if not src_v:
+                    continue
                 alt_v = val.get("alt", "") if isinstance(val, dict) else ""
                 html = set_image_slot(html, extra, src_v, alt_v)
 
@@ -487,6 +608,7 @@ def fill_template(template_id: str, payload: dict[str, Any], out_dir: Path) -> P
             merged["fonts"] = {**(payload.get("fonts") or {}), **local["fonts"]}
         css = build_override_css(merged)
     html = inject_override_css(html, css)
+    html = inject_poster_headline_fit(html)
 
     # Locale
     locale = (local.get("locale") if isinstance(local, dict) else None) or payload.get("locale") or "en"
@@ -515,6 +637,26 @@ def try_png_export(html_path: Path, png_path: Path, width: int, height: int) -> 
             browser = p.chromium.launch()
             page = browser.new_page(viewport={"width": width, "height": height}, device_scale_factor=1)
             page.goto(url, wait_until="networkidle")
+            page.evaluate(
+                """async () => {
+                  if (document.fonts && document.fonts.ready) await document.fonts.ready;
+                  if (window.__fitPosterTypography) window.__fitPosterTypography();
+                }"""
+            )
+            overflow = page.query_selector('.poster-title[data-headline-fit="overflow"]')
+            if overflow:
+                browser.close()
+                return False, (
+                    "PNG export blocked — poster headline cannot fit within two lines "
+                    "at the minimum approved size. Shorten the approved headline."
+                )
+            url_overflow = page.query_selector('.poster-url[data-url-fit="overflow"]')
+            if url_overflow:
+                browser.close()
+                return False, (
+                    "PNG export blocked — poster URL cannot fit the reserved footer width "
+                    "at the minimum approved size. Use a shorter display URL."
+                )
             # Screenshot the canvas article if present
             handle = page.query_selector("article.canvas, article.poster, article.ls, article.vf")
             # An overlay frame is meant to be composited over a video still, so its

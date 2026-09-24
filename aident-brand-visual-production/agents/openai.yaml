@@ -3,12 +3,8 @@ interface:
   short_description: "Produce marketing image kits and video production kits from pack handoffs."
   brand_color: "#4C5CFF"
   default_prompt: |
-    Use $aident-brand-visual-production to produce finished marketing media from a frozen
-    aident-brand-marketing-pack handoff or visual/video brief. Fill HTML templates + token payloads at the packaged
-    sizes, place supplied logos (never redraw), keep critical type in editable slots, inspect
-    exports (MIME/bytes/dimensions or duration/sha256), and return a pack-aligned return
-    package with status delivered|blocked|in-production. Default outputs are PNG/JPEG/SVG
-    and MP4/MOV; storyboards are never final video. Ask only when missing answers change
-    size family, rights, logo treatment, or final-encode scope.
+    Use $aident-brand-visual-production to turn a frozen marketing-pack handoff into batch-rendered
+    image assets and video production frames, inspect the outputs, and return a pack-aligned
+    manifest; never redraw supplied logos or label storyboards as final video.
 policy:
   allow_implicit_invocation: true

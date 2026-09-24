@@ -57,13 +57,14 @@
   width: 1000px;
   text-align: center;
   z-index: 4;
+  --poster-headline-size: 120px;
 }
 
 .poster-headline,
 .poster-headline-accent {
   margin: 0;
-  font-size: 120px;
-  line-height: 136.8px;
+  font-size: var(--poster-headline-size);
+  line-height: 1.14;
   letter-spacing: -2.4px;
   -webkit-background-clip: text;
   background-clip: text;
@@ -134,13 +135,17 @@
   right: 76px;
   top: 1522px;
   height: 71px;
+  max-width: 360px;
   margin: 0;
   display: flex;
   align-items: center;
-  font-size: 56px;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: var(--poster-url-size, 56px);
   line-height: 71px;
   font-weight: 400;
-  letter-spacing: -1.12px;
+  font-variation-settings: "wght" 400;
+  letter-spacing: -0.02em;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -15,7 +15,7 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parents[1]
 FOLDER_NAME = "aident-brand-visual-production"
-EXPECTED_VERSION = "0.3.0"
+EXPECTED_VERSION = "0.4.2"
 
 REQUIRED_FILES = [
     "SKILL.md",
@@ -26,6 +26,7 @@ REQUIRED_FILES = [
     "agents/openai.yaml",
     "assets/templates/size-kit.yaml",
     "assets/templates/production-return.yaml",
+    "assets/pack-handoff.schema.yaml",
     "assets/templates/shot-list.yaml",
     "assets/templates/storyboard.md",
     "assets/templates/layout-zones.md",
@@ -93,10 +94,12 @@ REQUIRED_FILES = [
     "assets/fonts/licenses/SmileySans-OFL.txt",
     "assets/fonts/licenses/NotoSansSC-OFL.txt",
     "assets/visual-kit/README.md",
+    "assets/placeholders/logo-lockup-dark.svg",
     "assets/tokens/tokens.json",
     "assets/visual-brief.schema.yaml",
     "assets/video-brief.schema.yaml",
     "references/pack-handoff.md",
+    "references/pack-bridge.md",
     "references/figma-template-kit.md",
     "references/image-production.md",
     "references/video-production-kit.md",
@@ -107,6 +110,7 @@ REQUIRED_FILES = [
     "references/reference-gap-matrix.md",
     "scripts/validate_package.py",
     "scripts/render_html_template.py",
+    "scripts/prepare_pack_run.py",
     "examples/image-kit-request.yaml",
     "examples/video-kit-request.yaml",
     "examples/both-from-pack-handoff.yaml",
@@ -499,6 +503,7 @@ def main() -> int:
 
     if not errors:
         import subprocess
+        import tempfile
 
         check = subprocess.run(
             [sys.executable, str(ROOT / "scripts" / "check_render.py")],
@@ -506,6 +511,37 @@ def main() -> int:
         )
         if check.returncode != 0:
             fail("scripts/check_render.py failed", errors)
+
+        with tempfile.TemporaryDirectory(prefix="abvp-bridge-") as tmp:
+            bridge = subprocess.run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts" / "prepare_pack_run.py"),
+                    "--handoff",
+                    str(ROOT / "examples" / "both-from-pack-handoff.yaml"),
+                    "--out",
+                    tmp,
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+            )
+            run_dir = Path(tmp) / "handoff-syn-both-001"
+            for required in (
+                "RETURN.md",
+                "return-manifest.yaml",
+                "docs/storyboard.md",
+                "docs/shot-list.yaml",
+                "production/run-plan.json",
+            ):
+                if not (run_dir / required).is_file():
+                    fail(f"prepare_pack_run missing generated file: {required}", errors)
+            if bridge.returncode != 0:
+                fail(
+                    "scripts/prepare_pack_run.py failed: "
+                    + (bridge.stderr or bridge.stdout).strip(),
+                    errors,
+                )
 
     if errors:
         print(f"FAIL ({len(errors)} error(s)):")

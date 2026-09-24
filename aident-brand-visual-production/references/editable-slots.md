@@ -21,7 +21,7 @@ Granularity mirrors Edward's `aident-ppt-skill` (HTML layout + editable tokens +
 | `logo-mark` | 80×80 mark (avatar / mark template) |
 | `logo-lockup` | Hug-width lockup (~257–365×80) |
 | `hero` | Hero photo / product visual |
-| `ui-screenshot` | Product UI capture |
+| `ui-screenshot` | Replaceable central product UI / supplied focal visual on UI-led posters and frames |
 | `product-art` | Product illustration / art |
 | `icon` | Small iconography slot |
 | `art-band` | Icon or integration art that bleeds off the light banner's bottom edge |
@@ -32,17 +32,17 @@ Granularity mirrors Edward's `aident-ppt-skill` (HTML layout + editable tokens +
 
 | `data-slot` | Typical use |
 |---|---|
-| `headline` | Primary title |
+| `headline` | Primary title; poster renderer fits it to a maximum of two total headline lines |
 | `subcopy` | Supporting body |
 | `cta` | Call to action |
 | `disclaimer` | Legal / fine print |
 | `title-tag` | Document `<title>` |
-| `url` | Footer URL on the feature poster |
+| `url` | Required lower-right footer URL on the feature poster; Outfit 400 at 56px when it fits, auto-sized only for long display domains |
 | `wordmark` | Editable name beside the mark in `tpl-logo-lockup` |
 | `kicker` | Small label on a storyboard frame |
 | `metric-a` / `metric-a-label` | First banner metric, only when the brief supplies the number |
 | `metric-b` / `metric-b-label` | Second banner metric, only when the brief supplies the number |
-| `headline-accent` / `title-accent` | Second run of a two-tone headline. Leave empty for a single-tone title. |
+| `headline-accent` / `title-accent` | Separately approved emphasized second line. It owns the brighter gradient; leave empty only when no second-line emphasis is intended. |
 | `stat-value-a` / `stat-label-a` | First stat pair on the light banner and `tpl-video-frame-stat`, only when the brief supplies the number |
 | `stat-value-b` / `stat-label-b` | Second stat pair, same condition |
 | `icon-label-a` … `icon-label-d` | Caption under each tile in `tpl-video-frame-label-row` |
@@ -53,6 +53,10 @@ Granularity mirrors Edward's `aident-ppt-skill` (HTML layout + editable tokens +
 - Hard-coded client brand hex values inside shared template HTML/CSS (outside the poster kit colors in `poster-specs.json` / `poster-kit.css` and labeled defaults in `tokens.css` / `tokens.json`) → **FAIL**
 - Generative redraw of a real logo into a logo slot → **FAIL**
 - Logo, mark, or lockup placed in `ui-screenshot`, `hero`, `product-art`, or an icon plate → **FAIL**
+- Feature poster with an empty `url` or without a supplied replaceable `ui-screenshot` / `hero` source → **FAIL**
+- Poster headline that still needs more than two lines at the packaged minimum type size → **FAIL**; shorten approved copy instead of clipping or adding a third line
+- Approved two-line emphasis packed into `headline` instead of separate `headline` + `headline-accent` bindings → **FAIL**; it loses the intended second-line gradient hierarchy
+- Footer URL rendered above Outfit 400, clipped, or allowed to dominate the footer because a long display domain was not fitted → **FAIL**
 - Poster background replaced by a flat `colors.bg` or ad-hoc circles → **FAIL**
 - Grain layer flattened, or its blend mode changed away from `overlay` → **FAIL**. The opacity is per template (`0.25` on posters, `0.30` on the social banners); take it from `poster-specs.json` / `banner-specs.json`, and do not recolour `grain-overlay.svg` — its noise is centred on mid grey so `overlay` leaves the field untouched.
 - A third-party product mark dropped into `icon-a` … `icon-f`, the chip rail, or `art-band` to imply an integration the brand has not shipped → **FAIL**. These tiles carry the brand's own connectors only.

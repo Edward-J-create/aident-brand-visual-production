@@ -39,6 +39,19 @@ Manual install: copy the complete package directory to the host skill folder, fo
 
 ## Run
 
+From a frozen `aident-brand-marketing-pack` handoff, validate bindings and prepare the whole return package in one command:
+
+```bash
+python3 aident-brand-visual-production/scripts/prepare_pack_run.py \
+  --handoff aident-brand-visual-production/examples/both-from-pack-handoff.yaml \
+  --out /tmp/abvp-return \
+  --png
+```
+
+This resolves approved copy and source-asset IDs into template slots, fills all requested still/storyboard frames, and emits the pack-aligned return manifest. Raster files remain `in-production` until visual/brand QA is completed.
+
+For one-off template rendering:
+
 ```bash
 python3 aident-brand-visual-production/scripts/render_html_template.py \
   --template tpl-feature-poster \
